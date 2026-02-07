@@ -1,0 +1,14 @@
+{
+    "name": "SRINI Systems",
+    "short_name": "SRINI",
+    "icons": [
+        {
+            "src": "/assets/android-chrome-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        }
+    ],
+    "theme_color": "#050505",
+    "background_color": "#050505",
+    "display": "standalone"
+}
