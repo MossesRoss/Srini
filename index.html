@@ -3,15 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SRINI | The 3-Week ERP Revolution</title>
-    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
-    <link rel="manifest" href="/site.webmanifest">
+    <title>SRINI CORP | Enterprise ERP & Logic Systems</title>
+    
+    <!-- BRANDING: Uses uploaded SRINI.png ONLY for Browser Tab -->
+    <link rel="icon" type="image/png" href="SRINI.png">
+    <link rel="apple-touch-icon" href="SRINI.png">
 
-    <meta name="description" content="Custom ERP implementation in 3 weeks. Cash Collection, Field Ops, and Fulfillment. Faster than any team in the world.">
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Srini Corp delivers custom ERP implementation in 21 days. Specialized in Cash Collection, Field Ops, and Fulfillment logic. Enterprise grade architecture.">
+    <meta name="keywords" content="Custom ERP, Business Logic, Payroll Automation, Field Ops Software, Srini Corp, Enterprise Software">
+    
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
@@ -21,12 +24,12 @@
                         mono: ['JetBrains Mono', 'monospace'],
                     },
                     colors: {
-                        'srini-black': '#050505',
-                        'srini-gray': '#121212',
-                        'srini-card': '#1a1a1a',
+                        'srini-black': '#000000',
+                        'srini-panel': '#080808',
+                        'srini-border': '#1A1A1A',
                         'srini-accent': '#00FF94',
-                        'srini-wise': '#4A90E2',
-                        'srini-danger': '#FF3333',
+                        'srini-dim': '#404040',
+                        'srini-text': '#CCCCCC',
                     }
                 }
             }
@@ -34,403 +37,537 @@
     </script>
     <style>
         body {
-            background-color: #050505;
-            color: #ffffff;
+            background-color: #000000;
+            color: #E5E5E5;
+            overflow-x: hidden;
         }
+
+        /* Scanline Overlay */
+        .scanlines {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,0) 50%, rgba(0,0,0,0.1) 50%, rgba(0,0,0,0.1));
+            background-size: 100% 4px;
+            pointer-events: none;
+            z-index: 50;
+            opacity: 0.5;
+        }
+
+        /* Tech Grid Background */
         .grid-bg {
-            background-image: linear-gradient(to right, #1a1a1a 1px, transparent 1px),
-                              linear-gradient(to bottom, #1a1a1a 1px, transparent 1px);
-            background-size: 40px 40px;
+            background-image: 
+                linear-gradient(to right, #111 1px, transparent 1px),
+                linear-gradient(to bottom, #111 1px, transparent 1px);
+            background-size: 50px 50px;
         }
-        .tech-card-hover:hover {
-            box-shadow: 0 0 20px rgba(0, 255, 148, 0.15);
-            border-color: rgba(0, 255, 148, 0.4);
-        }
+
         .leader-img {
-            filter: grayscale(100%);
-            transition: all 0.5s ease;
+            filter: grayscale(100%) contrast(1.1) brightness(0.9);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
         .leader-card:hover .leader-img {
-            filter: grayscale(0%);
-            transform: scale(1.05);
+            filter: grayscale(0%) contrast(1.05) brightness(1);
         }
-        .product-card {
-            border-left-width: 4px;
-            transition: all 0.3s ease;
+        .leader-card:hover {
+            border-color: #333;
         }
-        .product-card:hover {
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: #000; }
+        ::-webkit-scrollbar-thumb { background: #333; }
+        ::-webkit-scrollbar-thumb:hover { background: #00FF94; }
+
+        .glitch-hover:hover {
+            text-shadow: 2px 0 #00FF94, -2px 0 #ff00c1;
+        }
+        
+        .intel-link:hover .intel-arrow {
             transform: translateX(5px);
-            background-color: #222;
+            color: #00FF94;
         }
     </style>
 </head>
-<body class="antialiased overflow-x-hidden selection:bg-srini-accent selection:text-black">
+<body class="antialiased selection:bg-srini-accent selection:text-black font-sans">
+    
+    <div class="scanlines"></div>
 
-    <nav class="fixed w-full z-50 bg-srini-black/90 backdrop-blur-md border-b border-white/10">
+    <!-- HUD Navigation -->
+    <nav class="fixed w-full z-40 bg-black/90 backdrop-blur-sm border-b border-srini-border">
         <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-            <div class="text-2xl font-black tracking-tighter font-mono">SRINI<span class="text-srini-accent">.</span></div>
-            <div class="hidden md:flex space-x-8 text-sm font-medium text-gray-400">
-                <a href="#speed" class="hover:text-white transition-colors">The 3-Week Promise</a>
-                <a href="#products" class="hover:text-white transition-colors">Proprietary Solutions</a>
-                <a href="#engine" class="hover:text-white transition-colors">The Engine</a>
-                <a href="#leadership" class="hover:text-white transition-colors">Leadership</a>
+            <div class="flex items-center gap-3">
+                <div class="w-2 h-2 bg-srini-accent animate-pulse"></div>
+                <div class="text-xl font-bold tracking-tighter text-white font-mono">SRINI<span class="text-gray-600">_CORP</span></div>
             </div>
-            <a href="#contact" class="px-5 py-2 bg-white text-black font-bold text-sm hover:bg-srini-accent transition-colors">
-                Book Tech Audit
+            
+            <div class="hidden md:flex items-center space-x-12">
+                <a href="#speed" class="text-[10px] font-mono font-bold uppercase tracking-[0.2em] text-gray-500 hover:text-white transition-colors">Protocol</a>
+                <a href="#products" class="text-[10px] font-mono font-bold uppercase tracking-[0.2em] text-gray-500 hover:text-white transition-colors">Modules</a>
+                <a href="#board" class="text-[10px] font-mono font-bold uppercase tracking-[0.2em] text-gray-500 hover:text-white transition-colors">The Board</a>
+                <a href="#intel" class="text-[10px] font-mono font-bold uppercase tracking-[0.2em] text-gray-500 hover:text-white transition-colors">Intel</a>
+            </div>
+
+            <a href="#contact" class="px-6 py-2 border border-srini-border bg-srini-panel text-white font-mono text-[10px] font-bold uppercase tracking-widest hover:bg-white hover:text-black transition-all">
+                Init_Audit
             </a>
         </div>
     </nav>
 
     <main>
-        <header class="relative min-h-screen flex items-center justify-center pt-24 grid-bg overflow-hidden">
-            <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-srini-accent/5 rounded-full blur-3xl -z-10"></div>
+        <!-- Hero Section -->
+        <header class="relative min-h-screen flex items-center pt-20 border-b border-srini-border">
+            <div class="absolute inset-0 grid-bg opacity-100"></div>
+            <canvas id="hero-canvas" class="absolute inset-0 opacity-20 pointer-events-none"></canvas>
             
-            <div class="max-w-6xl mx-auto px-6 text-center z-10">
-                <div class="inline-block px-3 py-1 mb-6 border border-srini-accent/30 rounded-full bg-srini-accent/5">
-                    <span class="text-srini-accent text-xs font-mono font-bold tracking-widest uppercase">Ruthlessly Efficient</span>
+            <div class="max-w-7xl mx-auto px-6 z-10 w-full relative">
+                <div class="absolute top-0 right-0 p-4 border-l border-b border-srini-border opacity-50 hidden md:block">
+                    <div class="text-[10px] font-mono text-srini-accent">SYS_STATUS: ONLINE</div>
+                    <div class="text-[10px] font-mono text-gray-500">LOC: GLOBAL_NODE</div>
                 </div>
-                <h1 class="text-5xl md:text-8xl font-black tracking-tight leading-none mb-6">
-                    ERP IN <br>
-                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-500">3 WEEKS.</span>
-                </h1>
-                <p class="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto mb-10 font-light">
-                    We don't do year-long implementations. We don't do bloatware. 
-                    We deploy custom logic faster than any ERP team in the world.
-                </p>
-                <div class="flex flex-col md:flex-row gap-4 justify-center">
-                    <a href="#contact" class="px-8 py-4 bg-srini-accent text-black font-bold text-lg hover:brightness-110 transition-transform hover:-translate-y-1">
-                        Start The Clock
-                    </a>
-                    <a href="#products" class="px-8 py-4 border border-white/20 hover:border-white text-white font-medium text-lg transition-colors">
-                        Explore Solutions
-                    </a>
+
+                <div class="max-w-4xl">
+                    <div class="reveal">
+                        <div class="font-mono text-srini-accent text-xs mb-6 border border-srini-accent/20 inline-block px-2 py-1 bg-srini-accent/5">
+                            >> EXECUTION_SPEED: 10X
+                        </div>
+                        <h1 class="text-6xl md:text-9xl font-black tracking-tighter text-white mb-8 leading-[0.9]">
+                            ERP IN<br>
+                            <span class="text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-600 glitch-hover cursor-default">3 WEEKS.</span>
+                        </h1>
+                        <p class="text-xl text-gray-400 max-w-xl mb-12 font-light border-l-2 border-srini-accent pl-6 leading-relaxed">
+                            Srini Corp doesn't do "digital transformation." We do surgical logic injection. 
+                            <span class="text-white font-medium">No bloat. No year-long timelines. Just dominance.</span>
+                        </p>
+                        
+                        <div class="flex flex-col sm:flex-row gap-4">
+                            <a href="#contact" class="px-10 py-5 bg-white text-black font-bold font-mono text-sm uppercase tracking-widest hover:bg-srini-accent transition-colors">
+                                Start The Clock
+                            </a>
+                            <a href="#products" class="px-10 py-5 border border-srini-border text-gray-400 font-bold font-mono text-sm uppercase tracking-widest hover:text-white hover:border-white transition-colors">
+                                View Systems
+                            </a>
+                        </div>
+                    </div>
                 </div>
-                
-                <div class="mt-20 grid grid-cols-1 md:grid-cols-3 gap-8 border-t border-white/10 pt-10">
-                    <div>
-                        <div class="text-4xl font-mono font-bold text-white mb-1">21 Days</div>
-                        <div class="text-sm text-gray-500 uppercase tracking-widest">Deployment Time</div>
+
+                <!-- Metrics Ticker -->
+                <div class="mt-24 grid grid-cols-2 md:grid-cols-4 border-t border-srini-border">
+                    <div class="p-8 border-r border-srini-border reveal delay-100">
+                        <div class="text-3xl font-mono font-bold text-white">21<span class="text-sm text-gray-600 ml-1">DAYS</span></div>
+                        <div class="text-[10px] text-gray-500 uppercase tracking-widest mt-2">Deployment Time</div>
                     </div>
-                    <div>
-                        <div class="text-4xl font-mono font-bold text-white mb-1">0 Rupee</div>
-                        <div class="text-sm text-gray-500 uppercase tracking-widest">Wasted Spend</div>
+                    <div class="p-8 border-r border-srini-border reveal delay-200">
+                        <div class="text-3xl font-mono font-bold text-white">0<span class="text-sm text-gray-600 ml-1">INR</span></div>
+                        <div class="text-[10px] text-gray-500 uppercase tracking-widest mt-2">Wasted CapEx</div>
                     </div>
-                    <div>
-                        <div class="text-4xl font-mono font-bold text-white mb-1">AI Core</div>
-                        <div class="text-sm text-gray-500 uppercase tracking-widest">Integrated Logic</div>
+                    <div class="p-8 border-r border-srini-border reveal delay-300">
+                        <div class="text-3xl font-mono font-bold text-white">100<span class="text-sm text-gray-600 ml-1">%</span></div>
+                        <div class="text-[10px] text-gray-500 uppercase tracking-widest mt-2">Logic Control</div>
+                    </div>
+                    <div class="p-8 reveal delay-400 bg-srini-panel">
+                        <div class="text-3xl font-mono font-bold text-srini-accent">LIVE</div>
+                        <div class="text-[10px] text-gray-500 uppercase tracking-widest mt-2">System Status</div>
                     </div>
                 </div>
             </div>
         </header>
 
-        <section id="leadership" class="py-24 bg-srini-gray relative">
+        <!-- THE BOARD (BIG 4) -->
+        <section id="board" class="py-32 bg-srini-black border-b border-srini-border relative">
             <div class="max-w-7xl mx-auto px-6">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-                    <div>
-                        <h2 class="text-4xl font-bold mb-6">The Wisdom & The Spark.</h2>
-                        <p class="text-gray-400 text-lg mb-8 leading-relaxed">
-                            An unlikely alliance forging the perfect ERP. We combine decades of ruthless business logic with bleeding-edge technical dominance.
-                        </p>
-                        
-                        <div class="space-y-8">
-                            <div class="border-l-2 border-srini-wise pl-6">
-                                <div class="text-xs font-mono text-srini-wise mb-1">THE STRATEGIST</div>
-                                <h3 class="text-2xl font-bold text-white">Hathim</h3>
-                                <p class="text-gray-400 mt-2">
-                                    The wise businessman. He knows exactly where money leaks in an organization and designs the logic to stop it. Zero tolerance for inefficiency.
-                                </p>
-                            </div>
-
-                            <div class="border-l-2 border-srini-accent pl-6">
-                                <div class="text-xs font-mono text-srini-accent mb-1">THE ARCHITECT</div>
-                                <h3 class="text-2xl font-bold text-white">Mosses</h3>
-                                <p class="text-gray-400 mt-2">
-                                    The tech hero. He translates complex business requirements into high-performance code in hours, not weeks. Absolute control over the stack.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="grid grid-cols-2 gap-6 h-full">
-                        <div class="relative leader-card overflow-hidden border border-white/10 h-80 md:h-96">
-                            <img src="/assets/Hathim.png" alt="Hathim" class="w-full h-full object-cover leader-img">
-                            <div class="absolute bottom-0 left-0 w-full bg-srini-wise/90 p-3">
-                                <div class="text-black font-bold font-mono tracking-widest text-xs uppercase">Strategy Core</div>
-                            </div>
-                        </div>
-                        <div class="relative leader-card overflow-hidden border border-white/10 h-80 md:h-96 mt-12 md:mt-0">
-                            <img src="/assets/Mosses.png" alt="Mosses" class="w-full h-full object-cover leader-img">
-                            <div class="absolute bottom-0 left-0 w-full bg-srini-accent/90 p-3">
-                                <div class="text-black font-bold font-mono tracking-widest text-xs uppercase">Tech Core</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="engine" class="py-20 border-y border-white/5 bg-black">
-            <div class="max-w-7xl mx-auto px-6">
-                <div class="flex flex-col md:flex-row justify-between items-end mb-12">
-                    <div>
-                        <h2 class="text-3xl font-bold mb-2">The Engine.</h2>
-                        <p class="text-gray-400">Why we are faster than the giants.</p>
-                    </div>
-                    <div class="font-mono text-srini-accent text-sm mt-4 md:mt-0">
-                        // SYSTEM_ARCHITECTURE: OPTIMIZED
-                    </div>
+                <div class="mb-16 reveal">
+                    <h2 class="text-4xl font-bold mb-4 text-white tracking-tight">The Board.</h2>
+                    <p class="text-gray-400 text-lg leading-relaxed max-w-2xl">
+                        Strategy without code is hallucination. Code without strategy is waste. We are the synthesis.
+                    </p>
                 </div>
 
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                    <div class="bg-srini-gray border border-white/10 p-6 tech-card-hover transition-all">
-                        <div class="text-xs text-gray-500 font-mono mb-2">CORE LOGIC</div>
-                        <div class="text-xl font-bold text-white">Python / Rust</div>
-                        <div class="text-xs text-gray-400 mt-2">Zero-latency computation.</div>
-                    </div>
-                    <div class="bg-srini-gray border border-white/10 p-6 tech-card-hover transition-all">
-                        <div class="text-xs text-gray-500 font-mono mb-2">INTERFACE</div>
-                        <div class="text-xl font-bold text-white">Micro-Frontend</div>
-                        <div class="text-xs text-gray-400 mt-2">Modular updates without downtime.</div>
-                    </div>
-                    <div class="bg-srini-gray border border-white/10 p-6 tech-card-hover transition-all">
-                        <div class="text-xs text-gray-500 font-mono mb-2">DEPLOYMENT</div>
-                        <div class="text-xl font-bold text-white">Dockerized</div>
-                        <div class="text-xs text-gray-400 mt-2">Ship anywhere. AWS, Azure, Local.</div>
-                    </div>
-                    <div class="bg-srini-gray border border-white/10 p-6 tech-card-hover transition-all">
-                        <div class="text-xs text-gray-500 font-mono mb-2">DATABASE</div>
-                        <div class="text-xl font-bold text-white">PostgreSQL</div>
-                        <div class="text-xs text-gray-400 mt-2">ACID compliant. Ruthlessly reliable.</div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="products" class="py-24 bg-black">
-            <div class="max-w-7xl mx-auto px-6">
-                <div class="text-center mb-16">
-                    <h2 class="text-3xl md:text-5xl font-bold mb-4">Proprietary Solutions</h2>
-                    <p class="text-gray-400">Specialized engines built for vertical depth.</p>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <div class="product-card bg-srini-card p-6 border-srini-accent border-l-4">
-                        <div class="mb-4">
-                            <svg class="w-8 h-8 text-srini-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
-                        </div>
-                        <h3 class="text-lg font-bold text-white mb-2">Global Workforce Compliance & Payroll</h3>
-                        <p class="text-gray-400 text-sm mb-4">
-                            Multi-geo payroll engine with auto-tax compliance logic. Handle distributed teams without the paperwork.
-                        </p>
-                        <a href="#contact" class="text-xs font-mono text-srini-accent hover:text-white transition-colors">INITIATE_MODULE -></a>
-                    </div>
-
-                    <div class="product-card bg-srini-card p-6 border-srini-wise border-l-4">
-                        <div class="mb-4">
-                            <svg class="w-8 h-8 text-srini-wise" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"></path></svg>
-                        </div>
-                        <h3 class="text-lg font-bold text-white mb-2">Dealer Operations & Service Ledger</h3>
-                        <p class="text-gray-400 text-sm mb-4">
-                            End-to-end VIN tracking. From showroom floor to service bay. Real-time parts inventory sync.
-                        </p>
-                        <a href="#contact" class="text-xs font-mono text-srini-wise hover:text-white transition-colors">INITIATE_MODULE -></a>
-                    </div>
-
-                    <div class="product-card bg-srini-card p-6 border-srini-accent border-l-4">
-                        <div class="mb-4">
-                            <svg class="w-8 h-8 text-srini-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
-                        </div>
-                        <h3 class="text-lg font-bold text-white mb-2">Property Lease & Revenue Manager</h3>
-                        <p class="text-gray-400 text-sm mb-4">
-                            Automated billing cycles for complex unit structures. Integrated maintenance ticketing and revenue recognition.
-                        </p>
-                        <a href="#contact" class="text-xs font-mono text-srini-accent hover:text-white transition-colors">INITIATE_MODULE -></a>
-                    </div>
-
-                    <div class="product-card bg-srini-card p-6 border-srini-wise border-l-4">
-                        <div class="mb-4">
-                            <svg class="w-8 h-8 text-srini-wise" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
-                        </div>
-                        <h3 class="text-lg font-bold text-white mb-2">Field Technician Dispatch & Routing</h3>
-                        <p class="text-gray-400 text-sm mb-4">
-                            Geo-optimized routing algorithms. Real-time job status updates. Ensure the right tech is at the right site.
-                        </p>
-                        <a href="#contact" class="text-xs font-mono text-srini-wise hover:text-white transition-colors">INITIATE_MODULE -></a>
-                    </div>
-
-                    <div class="product-card bg-srini-card p-6 border-srini-accent border-l-4">
-                        <div class="mb-4">
-                            <svg class="w-8 h-8 text-srini-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
-                        </div>
-                        <h3 class="text-lg font-bold text-white mb-2">Construction Project Profitability & BOQ</h3>
-                        <p class="text-gray-400 text-sm mb-4">
-                            Live tracking of Bill of Quantities vs. Actuals. Real-time margin analysis per project phase.
-                        </p>
-                        <a href="#contact" class="text-xs font-mono text-srini-accent hover:text-white transition-colors">INITIATE_MODULE -></a>
-                    </div>
-
-                    <div class="product-card bg-srini-card p-6 border-srini-wise border-l-4">
-                        <div class="mb-4">
-                            <svg class="w-8 h-8 text-srini-wise" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3"></path></svg>
-                        </div>
-                        <h3 class="text-lg font-bold text-white mb-2">Variable Weight Inventory Engine</h3>
-                        <p class="text-gray-400 text-sm mb-4">
-                            For catch-weight industries (food/metal). Dual unit of measure tracking with forensic precision.
-                        </p>
-                        <a href="#contact" class="text-xs font-mono text-srini-wise hover:text-white transition-colors">INITIATE_MODULE -></a>
-                    </div>
-
-                    <div class="product-card bg-srini-card p-6 border-srini-accent border-l-4">
-                        <div class="mb-4">
-                            <svg class="w-8 h-8 text-srini-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
-                        </div>
-                        <h3 class="text-lg font-bold text-white mb-2">Automated Rebate Claim Settlement</h3>
-                        <p class="text-gray-400 text-sm mb-4">
-                            Vendor chargebacks on auto-pilot. Complex rebate logic engine to recover every cent due.
-                        </p>
-                        <a href="#contact" class="text-xs font-mono text-srini-accent hover:text-white transition-colors">INITIATE_MODULE -></a>
-                    </div>
-
-                    <div class="product-card bg-srini-card p-6 border-srini-wise border-l-4">
-                        <div class="mb-4">
-                            <svg class="w-8 h-8 text-srini-wise" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path></svg>
-                        </div>
-                        <h3 class="text-lg font-bold text-white mb-2">Apparel Matrix Command</h3>
-                        <p class="text-gray-400 text-sm mb-4">
-                            Handle Size/Color/Style variants without database bloat. Optimized for high-SKU velocity.
-                        </p>
-                        <a href="#contact" class="text-xs font-mono text-srini-wise hover:text-white transition-colors">INITIATE_MODULE -></a>
-                    </div>
-
-                    <div class="product-card bg-srini-card p-6 border-srini-accent border-l-4">
-                        <div class="mb-4">
-                            <svg class="w-8 h-8 text-srini-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                        </div>
-                        <h3 class="text-lg font-bold text-white mb-2">RMA Validation Portal</h3>
-                        <p class="text-gray-400 text-sm mb-4">
-                            Automated return logic with built-in fraud detection. Validates warranty status instantly.
-                        </p>
-                        <a href="#contact" class="text-xs font-mono text-srini-accent hover:text-white transition-colors">INITIATE_MODULE -></a>
-                    </div>
-
-                    <div class="product-card bg-srini-card p-6 border-srini-wise border-l-4">
-                        <div class="mb-4">
-                            <svg class="w-8 h-8 text-srini-wise" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                        </div>
-                        <h3 class="text-lg font-bold text-white mb-2">Global Netting Hub</h3>
-                        <p class="text-gray-400 text-sm mb-4">
-                            Inter-company settlement optimization. Currency hedging logic built into the core.
-                        </p>
-                        <a href="#contact" class="text-xs font-mono text-srini-wise hover:text-white transition-colors">INITIATE_MODULE -></a>
-                    </div>
-
-                    <div class="product-card bg-srini-card p-6 border-srini-accent border-l-4">
-                        <div class="mb-4">
-                            <svg class="w-8 h-8 text-srini-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
-                        </div>
-                        <h3 class="text-lg font-bold text-white mb-2">Usage Mediation Engine</h3>
-                        <p class="text-gray-400 text-sm mb-4">
-                            High-throughput meter-to-cash pipeline for subscription and usage-based models.
-                        </p>
-                        <a href="#contact" class="text-xs font-mono text-srini-accent hover:text-white transition-colors">INITIATE_MODULE -></a>
-                    </div>
-
-                    <div class="product-card bg-srini-card p-6 border-srini-wise border-l-4">
-                        <div class="mb-4">
-                            <svg class="w-8 h-8 text-srini-wise" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
-                        </div>
-                        <h3 class="text-lg font-bold text-white mb-2">High-Volume Reconciliation Engine</h3>
-                        <p class="text-gray-400 text-sm mb-4">
-                            Match million-row bank statements in seconds. Anomaly detection via ML.
-                        </p>
-                        <a href="#contact" class="text-xs font-mono text-srini-wise hover:text-white transition-colors">INITIATE_MODULE -></a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="speed" class="py-24 bg-white text-black">
-            <div class="max-w-7xl mx-auto px-6">
-                <h2 class="text-4xl md:text-6xl font-black mb-16 tracking-tighter">THE 21 DAY SPRINT.</h2>
-                
-                <div class="border-l-4 border-black ml-4 md:ml-0 space-y-12">
+                <!-- 2x2 Grid for Big 4 -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                     
-                    <div class="relative pl-8 md:pl-16">
-                        <div class="absolute -left-[11px] top-2 w-5 h-5 bg-black border-4 border-white"></div>
-                        <div class="font-mono font-bold text-sm mb-2 text-gray-500">WEEK 1: DAY 0-7</div>
-                        <h3 class="text-2xl font-bold mb-2">Diagnosis & Architecture</h3>
-                        <p class="text-gray-600 max-w-2xl">
-                            Hathim dissects your business flow. Mosses builds the database schema and core API routes. We don't ask "what do you want?", we tell you "what you need."
-                        </p>
+                    <!-- MOSSES (CEO) -->
+                    <div class="group leader-card cursor-crosshair relative border border-srini-border bg-srini-panel p-1 reveal delay-100">
+                        <div class="aspect-[3/4] overflow-hidden relative bg-gray-900">
+                            <!-- REPLACE WITH /assets/mosses.png -->
+                            <img src="/assets/mosses.png" onerror="this.src='https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=800&q=80'" alt="Mosses" class="w-full h-full object-cover leader-img">
+                            <div class="absolute top-2 right-2 text-[10px] font-mono bg-black/50 backdrop-blur px-2 text-white border border-white/20">
+                                CEO_01
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="text-lg font-bold text-white">Mosses</h3>
+                            <div class="h-px w-full bg-srini-border my-2"></div>
+                            <p class="text-srini-accent font-mono text-[10px] uppercase tracking-widest">CEO // Architect</p>
+                        </div>
                     </div>
 
-                    <div class="relative pl-8 md:pl-16">
-                        <div class="absolute -left-[11px] top-2 w-5 h-5 bg-black border-4 border-white"></div>
-                        <div class="font-mono font-bold text-sm mb-2 text-gray-500">WEEK 2: DAY 8-14</div>
-                        <h3 class="text-2xl font-bold mb-2">Development & Integration</h3>
-                        <p class="text-gray-600 max-w-2xl">
-                            The heavy lifting. Frontend UI connects to Backend Logic. We configure the Command Centers customized to your workflow.
-                        </p>
+                    <!-- HATIM (GROWTH) -->
+                    <div class="group leader-card cursor-crosshair relative border border-srini-border bg-srini-panel p-1 reveal delay-200">
+                        <div class="aspect-[3/4] overflow-hidden relative bg-gray-900">
+                            <!-- REPLACE WITH /assets/hatim.png -->
+                            <img src="/assets/hatim.png" onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=80'" alt="Hatim" class="w-full h-full object-cover leader-img">
+                            <div class="absolute top-2 right-2 text-[10px] font-mono bg-black/50 backdrop-blur px-2 text-white border border-white/20">
+                                GRW_02
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="text-lg font-bold text-white">Hatim</h3>
+                            <div class="h-px w-full bg-srini-border my-2"></div>
+                            <p class="text-srini-accent font-mono text-[10px] uppercase tracking-widest">Head of Growth</p>
+                        </div>
                     </div>
 
-                    <div class="relative pl-8 md:pl-16">
-                        <div class="absolute -left-[11px] top-2 w-5 h-5 bg-black border-4 border-white"></div>
-                        <div class="font-mono font-bold text-sm mb-2 text-gray-500">WEEK 3: DAY 15-21</div>
-                        <h3 class="text-2xl font-bold mb-2">Stress Test & Handover</h3>
-                        <p class="text-gray-600 max-w-2xl">
-                            We try to break the system so your employees can't. Training is minimal because the UI is intuitive. By Day 21, you are live.
-                        </p>
+                    <!-- ABI (CRO) -->
+                    <div class="group leader-card cursor-crosshair relative border border-srini-border bg-srini-panel p-1 reveal delay-300">
+                        <div class="aspect-[3/4] overflow-hidden relative bg-gray-900">
+                            <!-- REPLACE WITH /assets/abi.png -->
+                            <img src="/assets/abi.png" onerror="this.src='https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=800&q=80'" alt="Abi" class="w-full h-full object-cover leader-img">
+                            <div class="absolute top-2 right-2 text-[10px] font-mono bg-black/50 backdrop-blur px-2 text-white border border-white/20">
+                                CRO_03
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="text-lg font-bold text-white">Abi</h3>
+                            <div class="h-px w-full bg-srini-border my-2"></div>
+                            <p class="text-srini-accent font-mono text-[10px] uppercase tracking-widest">CRO // Client Success</p>
+                        </div>
+                    </div>
+
+                    <!-- COO (SISTER) -->
+                    <div class="group leader-card cursor-crosshair relative border border-srini-border bg-srini-panel p-1 reveal delay-400">
+                        <div class="aspect-[3/4] overflow-hidden relative bg-gray-900">
+                            <!-- REPLACE WITH /assets/coo.png -->
+                            <img src="/assets/coo.png" onerror="this.src='https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=800&q=80'" alt="COO" class="w-full h-full object-cover leader-img">
+                            <div class="absolute top-2 right-2 text-[10px] font-mono bg-black/50 backdrop-blur px-2 text-white border border-white/20">
+                                OPS_04
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="text-lg font-bold text-white">Operations Director</h3>
+                            <div class="h-px w-full bg-srini-border my-2"></div>
+                            <p class="text-srini-accent font-mono text-[10px] uppercase tracking-widest">COO // Execution</p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- TACTICAL UNIT (TEAM) -->
+                <div class="mt-20 pt-10 border-t border-srini-border reveal">
+                     <div class="flex items-center gap-4 mb-8">
+                        <div class="text-xs font-mono text-gray-500 uppercase tracking-widest">Tactical Unit</div>
+                        <div class="h-px bg-srini-border flex-grow"></div>
+                     </div>
+                     
+                     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <!-- LUX -->
+                        <div class="flex items-center gap-6 p-6 border border-srini-border bg-srini-panel/50 hover:bg-srini-panel transition-colors">
+                            <div class="w-20 h-20 bg-gray-800 overflow-hidden shrink-0 border border-gray-700">
+                                <!-- REPLACE WITH /assets/lux.png -->
+                                <img src="/assets/lux.png" onerror="this.src='https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&q=80'" class="w-full h-full object-cover grayscale">
+                            </div>
+                            <div>
+                                <h4 class="text-white font-bold text-lg">Lux</h4>
+                                <p class="text-srini-dim text-xs font-mono uppercase tracking-widest mt-1">Technical Lead</p>
+                            </div>
+                        </div>
+
+                        <!-- JAYAPRAKASH -->
+                        <div class="flex items-center gap-6 p-6 border border-srini-border bg-srini-panel/50 hover:bg-srini-panel transition-colors">
+                            <div class="w-20 h-20 bg-gray-800 overflow-hidden shrink-0 border border-gray-700">
+                                <!-- REPLACE WITH /assets/jp.png -->
+                                <img src="/assets/jp.png" onerror="this.src='https://images.unsplash.com/photo-1519345182560-3f2917c472ef?w=400&q=80'" class="w-full h-full object-cover grayscale">
+                            </div>
+                            <div>
+                                <h4 class="text-white font-bold text-lg">Jayaprakash</h4>
+                                <p class="text-srini-dim text-xs font-mono uppercase tracking-widest mt-1">Content & Manager</p>
+                            </div>
+                        </div>
+                     </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- MODULES: HIGH DENSITY GRID -->
+        <section id="products" class="py-32 bg-srini-black">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="flex items-center gap-4 mb-16 reveal">
+                    <div class="w-1 h-12 bg-srini-accent"></div>
+                    <div>
+                         <h2 class="text-3xl font-bold text-white">Proprietary Modules</h2>
+                         <p class="text-gray-500 text-sm mt-1">Specialized Logic Engines. Ready for injection.</p>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-1">
+                    <!-- Card 1 -->
+                    <div class="bg-srini-panel p-8 border border-transparent hover:border-srini-dim transition-all reveal hover:bg-srini-border/30">
+                        <div class="flex justify-between items-start mb-6">
+                            <span class="text-srini-accent font-mono text-xs">[01]</span>
+                            <span class="text-gray-600 font-mono text-[10px] border border-gray-800 px-1">GLOBAL_PAY</span>
+                        </div>
+                        <h3 class="text-white font-bold mb-2">Workforce Compliance</h3>
+                        <p class="text-gray-500 text-sm leading-relaxed mb-6">Multi-geo payroll engine with auto-tax compliance logic. Handle distributed teams without the paperwork.</p>
+                        <a href="#contact" class="text-xs font-mono text-white hover:text-srini-accent">INITIATE -></a>
+                    </div>
+                     <!-- Card 2 -->
+                    <div class="bg-srini-panel p-8 border border-transparent hover:border-srini-dim transition-all reveal delay-100 hover:bg-srini-border/30">
+                        <div class="flex justify-between items-start mb-6">
+                            <span class="text-srini-accent font-mono text-xs">[02]</span>
+                            <span class="text-gray-600 font-mono text-[10px] border border-gray-800 px-1">DEALER_OPS</span>
+                        </div>
+                        <h3 class="text-white font-bold mb-2">Dealer Ledger</h3>
+                        <p class="text-gray-500 text-sm leading-relaxed mb-6">End-to-end VIN tracking. From showroom floor to service bay. Real-time parts inventory sync.</p>
+                        <a href="#contact" class="text-xs font-mono text-white hover:text-srini-accent">INITIATE -></a>
+                    </div>
+                     <!-- Card 3 -->
+                    <div class="bg-srini-panel p-8 border border-transparent hover:border-srini-dim transition-all reveal delay-200 hover:bg-srini-border/30">
+                        <div class="flex justify-between items-start mb-6">
+                            <span class="text-srini-accent font-mono text-xs">[03]</span>
+                            <span class="text-gray-600 font-mono text-[10px] border border-gray-800 px-1">PROP_REV</span>
+                        </div>
+                        <h3 class="text-white font-bold mb-2">Property Revenue</h3>
+                        <p class="text-gray-500 text-sm leading-relaxed mb-6">Automated billing cycles for complex unit structures. Integrated maintenance ticketing.</p>
+                        <a href="#contact" class="text-xs font-mono text-white hover:text-srini-accent">INITIATE -></a>
+                    </div>
+                     <!-- Card 4 -->
+                    <div class="bg-srini-panel p-8 border border-transparent hover:border-srini-dim transition-all reveal delay-100 hover:bg-srini-border/30">
+                        <div class="flex justify-between items-start mb-6">
+                            <span class="text-srini-accent font-mono text-xs">[04]</span>
+                            <span class="text-gray-600 font-mono text-[10px] border border-gray-800 px-1">GEO_DISPATCH</span>
+                        </div>
+                        <h3 class="text-white font-bold mb-2">Dispatch & Routing</h3>
+                        <p class="text-gray-500 text-sm leading-relaxed mb-6">Geo-optimized routing algorithms. Real-time job status updates. Ensure the right tech is at the right site.</p>
+                        <a href="#contact" class="text-xs font-mono text-white hover:text-srini-accent">INITIATE -></a>
+                    </div>
+                     <!-- Card 5 -->
+                    <div class="bg-srini-panel p-8 border border-transparent hover:border-srini-dim transition-all reveal delay-200 hover:bg-srini-border/30">
+                        <div class="flex justify-between items-start mb-6">
+                            <span class="text-srini-accent font-mono text-xs">[05]</span>
+                            <span class="text-gray-600 font-mono text-[10px] border border-gray-800 px-1">CONST_BOQ</span>
+                        </div>
+                        <h3 class="text-white font-bold mb-2">Project Profitability</h3>
+                        <p class="text-gray-500 text-sm leading-relaxed mb-6">Live tracking of Bill of Quantities vs. Actuals. Real-time margin analysis per project phase.</p>
+                        <a href="#contact" class="text-xs font-mono text-white hover:text-srini-accent">INITIATE -></a>
+                    </div>
+                     <!-- Card 6 -->
+                    <div class="bg-srini-panel p-8 border border-transparent hover:border-srini-dim transition-all reveal delay-300 hover:bg-srini-border/30">
+                        <div class="flex justify-between items-start mb-6">
+                            <span class="text-srini-accent font-mono text-xs">[06]</span>
+                            <span class="text-gray-600 font-mono text-[10px] border border-gray-800 px-1">VAR_INV</span>
+                        </div>
+                        <h3 class="text-white font-bold mb-2">Variable Inventory</h3>
+                        <p class="text-gray-500 text-sm leading-relaxed mb-6">For catch-weight industries. Dual unit of measure tracking with forensic precision.</p>
+                        <a href="#contact" class="text-xs font-mono text-white hover:text-srini-accent">INITIATE -></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TIMELINE SPRINT -->
+        <section id="speed" class="py-32 bg-white text-black">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="mb-20 reveal">
+                    <h2 class="text-6xl md:text-8xl font-black tracking-tighter leading-none mb-4">THE 21 DAY<br>SPRINT.</h2>
+                    <div class="h-2 w-full bg-black"></div>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-12 font-mono">
+                    <div class="reveal delay-100">
+                        <div class="text-sm font-bold mb-4 bg-black text-white inline-block px-2">WEEK 01</div>
+                        <h3 class="text-2xl font-bold mb-4">Architecture</h3>
+                        <p class="text-gray-600 text-sm">Hathim dissects business flow. Mosses builds schema. No questions asked, only answers given.</p>
+                    </div>
+                    <div class="reveal delay-200">
+                        <div class="text-sm font-bold mb-4 bg-black text-white inline-block px-2">WEEK 02</div>
+                        <h3 class="text-2xl font-bold mb-4">Integration</h3>
+                        <p class="text-gray-600 text-sm">Heavy lifting. Frontend UI connects to Backend Logic. Command centers configured.</p>
+                    </div>
+                    <div class="reveal delay-300">
+                        <div class="text-sm font-bold mb-4 bg-black text-white inline-block px-2">WEEK 03</div>
+                        <h3 class="text-2xl font-bold mb-4">Handover</h3>
+                        <p class="text-gray-600 text-sm">Stress testing. We try to break it so you can't. By Day 21, you are live.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- INTELLIGENCE / BLOG SECTION -->
+        <section id="intel" class="py-32 bg-srini-black border-t border-srini-border">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="flex items-end justify-between mb-16 reveal">
+                    <div>
+                        <h2 class="text-3xl font-bold text-white mb-2">Field Intelligence.</h2>
+                        <p class="text-gray-400">Signals from the deployment frontlines.</p>
+                    </div>
+                    <div class="hidden md:block text-xs font-mono text-srini-accent animate-pulse">
+                        LIVE FEED :: ENCRYPTED
+                    </div>
+                </div>
+
+                <div class="border-t border-srini-border">
+                    <!-- Article 1 -->
+                    <a href="blogs/off_the_shelf_death.html" class="block intel-link group border-b border-srini-border py-8 hover:bg-srini-panel transition-all reveal">
+                        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                            <div class="flex items-center gap-6">
+                                <div class="text-xs font-mono text-gray-600 w-24">2024.10.12</div>
+                                <div class="text-xs font-mono text-srini-accent border border-srini-accent/20 px-2 py-0.5 rounded">STRATEGY</div>
+                            </div>
+                            <div class="flex-grow">
+                                <h3 class="text-xl font-bold text-white group-hover:text-srini-accent transition-colors">Why "Off-the-Shelf" ERPs are Killing Your Cash Flow</h3>
+                            </div>
+                            <div class="intel-arrow text-gray-600 transition-transform duration-300">-></div>
+                        </div>
+                    </a>
+
+                    <!-- Article 2: Placeholder for now, user needs to create this later -->
+                    <div class="block intel-link group border-b border-srini-border py-8 hover:bg-srini-panel transition-all reveal delay-100 opacity-50 cursor-not-allowed">
+                        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                            <div class="flex items-center gap-6">
+                                <div class="text-xs font-mono text-gray-600 w-24">2024.09.28</div>
+                                <div class="text-xs font-mono text-gray-500 border border-gray-500/20 px-2 py-0.5 rounded">REDACTED</div>
+                            </div>
+                            <div class="flex-grow">
+                                <h3 class="text-xl font-bold text-gray-500">The 21-Day Myth: How We Actually Do It</h3>
+                            </div>
+                            <div class="intel-arrow text-gray-600">--</div>
+                        </div>
+                    </div>
+
+                    <!-- Article 3: Placeholder -->
+                    <div class="block intel-link group border-b border-srini-border py-8 hover:bg-srini-panel transition-all reveal delay-200 opacity-50 cursor-not-allowed">
+                        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                            <div class="flex items-center gap-6">
+                                <div class="text-xs font-mono text-gray-600 w-24">2024.09.15</div>
+                                <div class="text-xs font-mono text-gray-500 border border-gray-500/20 px-2 py-0.5 rounded">REDACTED</div>
+                            </div>
+                            <div class="flex-grow">
+                                <h3 class="text-xl font-bold text-gray-500">Deploying Logic for a 500Cr Construction Firm</h3>
+                            </div>
+                            <div class="intel-arrow text-gray-600">--</div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
     </main>
 
-    <footer id="contact" class="bg-black py-24 border-t border-white/10">
-        <div class="max-w-4xl mx-auto px-6 text-center">
-            <h2 class="text-4xl font-bold text-white mb-6">Enough Talk.</h2>
-            <p class="text-gray-400 mb-10 text-lg">
-                You want control. You want speed. You want SRINI.
-                <br>Stop using spreadsheets. Start using software.
-            </p>
+    <footer id="contact" class="bg-black py-32 border-t border-srini-border relative overflow-hidden">
+        <div class="max-w-4xl mx-auto px-6 relative z-10 text-center">
+            <h2 class="text-5xl font-bold text-white mb-10 tracking-tight">Execute Control.</h2>
             
-            <form action="https://formsubmit.co/YOUR_EMAIL_HERE" method="POST" class="max-w-xl mx-auto bg-srini-gray border border-white/10 rounded-lg p-1 text-left font-mono">
+            <form action="https://formsubmit.co/contact@srinicorp.com" method="POST" class="max-w-xl mx-auto text-left font-mono">
+                <!-- Honey Pot to prevent spam (hidden) -->
                 <input type="hidden" name="_captcha" value="false">
-                <input type="hidden" name="_template" value="table">
-                <input type="hidden" name="_subject" value="SRINI: New High-Value Lead">
                 
-                <div class="bg-black px-4 py-2 text-xs text-gray-500 border-b border-white/5 flex justify-between">
-                    <span>ROOT@SRINI-SERVER:~#</span>
-                    <span class="text-srini-accent">● LIVE</span>
-                </div>
-                <div class="p-6 space-y-4">
-                    <div class="flex items-center">
-                        <span class="text-srini-accent mr-3">➜</span>
-                        <input type="email" name="email" class="bg-transparent w-full text-white focus:outline-none" placeholder="enter_your_email" required>
+                <div class="bg-srini-panel border border-srini-border p-8 shadow-2xl">
+                    <div class="mb-6">
+                        <label class="text-[10px] text-gray-500 uppercase tracking-widest mb-2 block">Your Email (Required for Reply)</label>
+                        <input type="email" name="email" class="w-full bg-black border border-srini-border text-white p-3 focus:border-srini-accent focus:outline-none transition-colors" placeholder="you@company.com" required>
                     </div>
-                    <div class="flex items-center">
-                        <span class="text-srini-accent mr-3">➜</span>
-                        <select name="objective" class="bg-transparent w-full text-gray-400 focus:outline-none focus:text-white cursor-pointer appearance-none">
-                            <option value="Global_Workforce">select_objective: Global_Workforce_Payroll</option>
-                            <option value="Dealer_Ops">select_objective: Dealer_Ops</option>
-                            <option value="Property_Manager">select_objective: Property_Manager</option>
-                            <option value="Construction_BOQ">select_objective: Construction_BOQ</option>
-                            <option value="Inventory_Engine">select_objective: Inventory_Engine</option>
-                            <option value="Full_ERP">select_objective: Full_ERP</option>
-                        </select>
+                    <div class="mb-8">
+                        <label class="text-[10px] text-gray-500 uppercase tracking-widest mb-2 block">Mission Brief</label>
+                        <textarea name="message" rows="4" class="w-full bg-black border border-srini-border text-white p-3 focus:border-srini-accent focus:outline-none transition-colors resize-none" placeholder="Briefly describe the business logic failure or module needed..." required></textarea>
                     </div>
-                    <button type="submit" class="w-full mt-4 bg-white hover:bg-srini-accent hover:text-black text-black font-bold py-3 transition-colors uppercase tracking-widest text-sm">
-                        Execute_Request()
+                    <button type="submit" class="w-full bg-white text-black font-bold py-4 hover:bg-srini-accent hover:text-black transition-colors uppercase tracking-widest text-sm">
+                        Initialize Protocol
                     </button>
+                </div>
+                <div class="text-center mt-4 text-xs text-gray-600">
+                    SECURE CONNECTION ENCRYPTED
                 </div>
             </form>
 
-            <div class="mt-20 pt-10 border-t border-white/5 flex flex-col md:flex-row justify-between items-center text-xs text-gray-600 font-mono">
-                <div>&copy; 2024 SRINI SYSTEMS. ALL RIGHTS RESERVED.</div>
-                <div class="mt-4 md:mt-0">CODED BY MOSSES. STRATEGY BY HATHIM.</div>
+            <div class="mt-24 flex justify-between items-end text-[10px] font-mono text-gray-600 border-t border-srini-border pt-6">
+                <div>
+                    SRINI CORP &copy; 2024<br>
+                    ALL RIGHTS RESERVED
+                </div>
+                <div class="text-right">
+                    CODED BY MOSSES<br>
+                    STRATEGY BY HATHIM
+                </div>
             </div>
         </div>
     </footer>
 
+    <script>
+        // Scroll Reveal
+        const revealElements = document.querySelectorAll(".reveal");
+        const revealOnScroll = () => {
+            const windowHeight = window.innerHeight;
+            const elementVisible = 50;
+            revealElements.forEach((reveal) => {
+                const elementTop = reveal.getBoundingClientRect().top;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveal.classList.add("active");
+                }
+            });
+        };
+        window.addEventListener("scroll", revealOnScroll);
+        revealOnScroll();
+
+        // Canvas: Data Rain
+        const canvas = document.getElementById('hero-canvas');
+        const ctx = canvas.getContext('2d');
+        let width, height;
+
+        function resize() {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+        }
+
+        const characters = '01';
+        const fontSize = 14;
+        let columns;
+        let drops = [];
+
+        function initMatrix() {
+            columns = Math.floor(width / fontSize);
+            drops = [];
+            for (let i = 0; i < columns; i++) {
+                drops[i] = Math.random() * -100; 
+            }
+        }
+
+        function drawMatrix() {
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+            ctx.fillRect(0, 0, width, height);
+
+            ctx.fillStyle = '#00FF94';
+            ctx.font = fontSize + 'px monospace';
+
+            for (let i = 0; i < drops.length; i++) {
+                const text = characters.charAt(Math.floor(Math.random() * characters.length));
+                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+                if (drops[i] * fontSize > height && Math.random() > 0.975) {
+                    drops[i] = 0;
+                }
+                drops[i]++;
+            }
+            requestAnimationFrame(drawMatrix);
+        }
+
+        window.addEventListener('resize', () => {
+            resize();
+            initMatrix();
+        });
+
+        resize();
+        initMatrix();
+        drawMatrix();
+    </script>
 </body>
 </html>
