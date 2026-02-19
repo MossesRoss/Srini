@@ -5,8 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SRINI INTEL | Off-the-Shelf ERPs are Death</title>
     
-    <!-- BRANDING -->
-    <link rel="icon" type="image/png" href="../SRINI.png">
+    <link rel="icon" type="image/png" href="../favicon.png">
     
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
@@ -14,72 +13,42 @@
         tailwind.config = {
             theme: {
                 extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        mono: ['JetBrains Mono', 'monospace'],
-                    },
                     colors: {
-                        'srini-black': '#000000',
-                        'srini-panel': '#080808',
-                        'srini-border': '#1A1A1A',
-                        'srini-accent': '#00FF94',
-                        'srini-dim': '#404040',
-                        'srini-text': '#CCCCCC',
+                        'srini-black': '#050505',
+                        'srini-gray': '#121212',
+                        'srini-card': '#1a1a1a',
+                        'srini-accent': '#D92525',
+                        'srini-wise': '#555555',
+                        'srini-danger': '#FF3333',
                     }
                 }
             }
         }
     </script>
     <style>
-        body {
-            background-color: #000000;
-            color: #E5E5E5;
-            overflow-x: hidden;
-        }
-        .scanlines {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,0) 50%, rgba(0,0,0,0.1) 50%, rgba(0,0,0,0.1));
-            background-size: 100% 4px;
-            pointer-events: none;
-            z-index: 50;
-            opacity: 0.5;
-        }
-        .prose-custom p {
-            margin-bottom: 1.5em;
-            line-height: 1.7;
-            color: #ccc;
-        }
-        .prose-custom h2 {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: white;
-            margin-top: 2.5em;
-            margin-bottom: 1em;
+        body { background-color: #050505; color: #E5E5E5; overflow-x: hidden; }
+        .bottom-fade {
+            position: fixed; bottom: 0; left: 0; width: 100%; height: 15vh;
+            background: linear-gradient(to top, #050505 0%, transparent 100%);
+            pointer-events: none; z-index: 45;
         }
     </style>
 </head>
-<body class="antialiased font-sans bg-black">
-    
-    <div class="scanlines"></div>
-
-    <!-- Navigation -->
-    <nav class="fixed w-full z-40 bg-black/90 backdrop-blur-sm border-b border-srini-border">
+<body class="antialiased font-sans bg-srini-black">
+    <div class="bottom-fade"></div>
+    <nav class="fixed w-full z-40 bg-srini-black/90 backdrop-blur-sm border-b border-srini-card">
         <div class="max-w-4xl mx-auto px-6 h-16 flex items-center justify-between">
-            <a href="../index.html" class="flex items-center gap-2 text-sm font-mono text-gray-500 hover:text-white transition-colors">
+            <a href="../index.html" class="flex items-center gap-2 text-sm font-mono text-srini-wise hover:text-white transition-colors">
                 <span class="text-srini-accent"><-</span> RETURN_TO_HQ
             </a>
-            <div class="text-xs font-mono text-srini-accent border border-srini-accent/20 px-2 py-1 bg-srini-accent/5">
+            <div class="text-xs font-mono text-srini-accent border border-srini-accent/20 px-2 py-1 bg-srini-accent/10">
                 INTEL :: PUBLIC_RELEASE
             </div>
         </div>
     </nav>
 
     <!-- Content -->
-    <main class="pt-32 pb-32">
+<main class="pt-32 pb-32">
         <article class="max-w-3xl mx-auto px-6">
             
             <!-- Header -->
