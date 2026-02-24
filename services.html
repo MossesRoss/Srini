@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tailored Solutions | SRINI CORP</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'], mono: ['JetBrains Mono', 'monospace'] },
+                    colors: { 'srini-black': '#050505', 'srini-card': '#1a1a1a', 'srini-accent': '#D92525', 'srini-wise': '#555555' }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #050505; color: #E5E5E5; }
+        .grid-bg { background-image: linear-gradient(to right, #121212 1px, transparent 1px), linear-gradient(to bottom, #121212 1px, transparent 1px); background-size: 50px 50px; }
+        .reveal { opacity: 0; transform: translateY(20px); transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+    </style>
+</head>
+<body class="antialiased selection:bg-srini-accent selection:text-white font-sans pt-24 relative min-h-screen">
+    
+    <div class="absolute inset-0 grid-bg opacity-50 z-0 pointer-events-none"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-40 bg-srini-black/90 backdrop-blur-sm border-b border-srini-card">
+        <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+            <a href="index.html" class="text-xl font-bold tracking-tighter text-white font-mono hover:text-srini-accent transition-colors"><- BACK TO HUB</a>
+            <a href="index.html#contact" class="px-6 py-2 border border-srini-wise text-white bg-black font-mono text-[10px] font-bold uppercase tracking-widest hover:border-white transition-all">
+                Init_CTRL
+            </a>
+        </div>
+    </nav>
+
+    <main class="max-w-7xl mx-auto px-6 pb-32 relative z-10">
+        <div class="mb-16 reveal pt-10">
+            <h1 class="text-5xl font-black mb-4 text-white tracking-tight">Tailored Architectures.</h1>
+            <p class="text-srini-wise font-mono text-sm uppercase tracking-widest max-w-2xl leading-relaxed">
+                We do not sell boxed software. We engineer full ERPs and autonomous logic systems configured precisely for your operational dominance. Built efficiently. Deployed ruthlessly.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <!-- Full ERP -->
+            <div class="bg-srini-card p-10 border border-transparent hover:border-srini-wise transition-all reveal">
+                <div class="flex justify-between items-start mb-6">
+                    <span class="text-srini-accent font-mono text-xs">[SYS_01]</span>
+                    <span class="text-srini-wise font-mono text-[10px] border border-gray-800 px-1">CORE</span>
+                </div>
+                <h3 class="text-2xl text-white font-bold mb-4">Full Custom ERPs</h3>
+                <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                    A comprehensive, end-to-end Enterprise Resource Planning system. We map your exact business logic—manufacturing, HR, finance, and operations—and build a centralized engine without the bloat of legacy platforms. 100% logic ownership.
+                </p>
+            </div>
+             
+            <!-- Orchestrator -->
+            <div class="bg-srini-card p-10 border border-transparent hover:border-srini-wise transition-all reveal delay-100">
+                <div class="flex justify-between items-start mb-6">
+                    <span class="text-srini-accent font-mono text-xs">[SYS_02]</span>
+                    <span class="text-srini-wise font-mono text-[10px] border border-gray-800 px-1">AI_SCM</span>
+                </div>
+                <h3 class="text-2xl text-white font-bold mb-4">Multi-Agentic SCM</h3>
+                <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                    The self-driving brain of your supply chain. Decentralized AI agents process live IoT and market feeds to autonomously negotiate, route, and heal disruptions. Designed to act before human latency costs you money.
+                </p>
+            </div>
+
+            <!-- Financial Logic -->
+            <div class="bg-srini-card p-10 border border-transparent hover:border-srini-wise transition-all reveal">
+                <div class="flex justify-between items-start mb-6">
+                    <span class="text-srini-accent font-mono text-xs">[SYS_03]</span>
+                    <span class="text-srini-wise font-mono text-[10px] border border-gray-800 px-1">FIN_OPS</span>
+                </div>
+                <h3 class="text-2xl text-white font-bold mb-4">Financial Ledger Integration</h3>
+                <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                    Automated billing cycles, multi-geo compliance, and strict economic circuit breakers. We ensure your autonomous operations are perfectly synced and governed by your primary financial ledgers to protect margins.
+                </p>
+            </div>
+
+            <!-- Operations specific -->
+            <div class="bg-srini-card p-10 border border-transparent hover:border-srini-wise transition-all reveal delay-100">
+                <div class="flex justify-between items-start mb-6">
+                    <span class="text-srini-accent font-mono text-xs">[SYS_04]</span>
+                    <span class="text-srini-wise font-mono text-[10px] border border-gray-800 px-1">CUSTOM</span>
+                </div>
+                <h3 class="text-2xl text-white font-bold mb-4">Sector-Specific Logic</h3>
+                <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                    Whether tracking end-to-end VINs on a dealer floor or managing complex property revenue models, we build highly specialized micro-services that inject directly into your core architecture.
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        const revealElements = document.querySelectorAll(".reveal");
+        const revealOnScroll = () => {
+            const windowHeight = window.innerHeight;
+            revealElements.forEach((reveal) => {
+                const elementTop = reveal.getBoundingClientRect().top;
+                if (elementTop < windowHeight - 50) reveal.classList.add("active");
+            });
+        };
+        window.addEventListener("scroll", revealOnScroll);
+        revealOnScroll();
+    </script>
+</body>
+</html>
