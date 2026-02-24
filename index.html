@@ -1,16 +1,19 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SRINI CORP | AI Supply Chain Orchestration</title>
-    
+
     <link rel="icon" type="image/png" href="favicon.png">
     <link rel="apple-touch-icon" href="favicon.png">
     <meta name="description" content="Autonomous Multi-Agentic Supply Chain Orchestrator. AI ERP in 3 weeks.">
-    
+
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;900&family=JetBrains+Mono:wght@400;500;700&display=swap"
+        rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
@@ -35,22 +38,85 @@
         }
     </script>
     <style>
-        body { background-color: #050505; color: #E5E5E5; overflow-x: hidden; }
-        .scanlines { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,0) 50%, rgba(0,0,0,0.1) 50%, rgba(0,0,0,0.1)); background-size: 100% 4px; pointer-events: none; z-index: 50; opacity: 0.2; }
-        .bottom-fade { position: fixed; bottom: 0; left: 0; width: 100%; height: 20vh; background: linear-gradient(to top, #050505 10%, transparent 100%); pointer-events: none; z-index: 45; }
-        .grid-bg { background-image: linear-gradient(to right, #121212 1px, transparent 1px), linear-gradient(to bottom, #121212 1px, transparent 1px); background-size: 50px 50px; }
-        .reveal { opacity: 0; transform: translateY(20px); transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
-        .reveal.active { opacity: 1; transform: translateY(0); }
-        .type-cursor::after { content: '█'; animation: blink 1s step-start infinite; color: #D92525; margin-left: 4px; }
-        @keyframes blink { 50% { opacity: 0; } }
-        ::-webkit-scrollbar { width: 4px; }
-        ::-webkit-scrollbar-track { background: #050505; }
-        ::-webkit-scrollbar-thumb { background: #1a1a1a; }
-        ::-webkit-scrollbar-thumb:hover { background: #D92525; }
+        body {
+            background-color: #050505;
+            color: #E5E5E5;
+            overflow-x: hidden;
+        }
+
+        .scanlines {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.1) 50%, rgba(0, 0, 0, 0.1));
+            background-size: 100% 4px;
+            pointer-events: none;
+            z-index: 50;
+            opacity: 0.2;
+        }
+
+        .bottom-fade {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 20vh;
+            background: linear-gradient(to top, #050505 10%, transparent 100%);
+            pointer-events: none;
+            z-index: 45;
+        }
+
+        .grid-bg {
+            background-image: linear-gradient(to right, #121212 1px, transparent 1px), linear-gradient(to bottom, #121212 1px, transparent 1px);
+            background-size: 50px 50px;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .type-cursor::after {
+            content: '█';
+            animation: blink 1s step-start infinite;
+            color: #D92525;
+            margin-left: 4px;
+        }
+
+        @keyframes blink {
+            50% {
+                opacity: 0;
+            }
+        }
+
+        ::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #050505;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #1a1a1a;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #D92525;
+        }
     </style>
 </head>
+
 <body class="antialiased selection:bg-srini-accent selection:text-white font-sans">
-    
+
     <div class="scanlines"></div>
     <div class="bottom-fade"></div>
 
@@ -58,17 +124,24 @@
     <nav class="fixed w-full z-40 bg-srini-black/90 backdrop-blur-sm border-b border-srini-card">
         <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
             <div class="flex items-center gap-3">
-                <div class="text-xl font-bold tracking-tighter text-white font-mono">SRINI<span class="text-srini-wise">_CORP</span></div>
-            </div>
-            
-            <div class="hidden md:flex items-center space-x-12">
-                <a href="#architectures" class="text-[10px] font-mono font-bold uppercase tracking-[0.2em] text-srini-wise hover:text-white transition-colors">Architectures</a>
-                <a href="services.html" class="text-[10px] font-mono font-bold uppercase tracking-[0.2em] text-srini-wise hover:text-white transition-colors">All Services</a>
-                <a href="team.html" class="text-[10px] font-mono font-bold uppercase tracking-[0.2em] text-srini-wise hover:text-white transition-colors">The Board</a>
+                <div class="text-xl font-bold tracking-tighter text-white font-mono">SRINI<span
+                        class="text-srini-wise">_CORP</span></div>
             </div>
 
-            <a href="#contact" class="px-6 py-2 border border-srini-danger text-srini-danger bg-srini-danger/5 font-mono text-[10px] font-bold uppercase tracking-widest hover:bg-srini-danger hover:text-white transition-all">
-                Init_CTRL
+            <div class="hidden md:flex items-center space-x-12">
+                <a href="#architectures"
+                    class="text-[10px] font-mono font-bold uppercase tracking-[0.2em] text-srini-wise hover:text-white transition-colors">Architectures</a>
+                <a href="services.html"
+                    class="text-[10px] font-mono font-bold uppercase tracking-[0.2em] text-srini-wise hover:text-white transition-colors">All
+                    Services</a>
+                <a href="team.html"
+                    class="text-[10px] font-mono font-bold uppercase tracking-[0.2em] text-srini-wise hover:text-white transition-colors">The
+                    Board</a>
+            </div>
+
+            <a href="#contact"
+                class="px-6 py-2 border border-srini-danger text-srini-danger bg-srini-danger/5 font-mono text-[10px] font-bold uppercase tracking-widest hover:bg-srini-danger hover:text-white transition-all">
+                DOUBLE REVENUE
             </a>
         </div>
     </nav>
@@ -77,7 +150,7 @@
         <!-- Hero Section -->
         <header class="relative min-h-screen flex items-center pt-20 border-b border-srini-card overflow-hidden">
             <div class="absolute inset-0 grid-bg opacity-100"></div>
-            
+
             <div class="max-w-7xl mx-auto px-6 z-10 w-full relative">
                 <div class="absolute top-0 right-0 p-4 border-l border-b border-srini-card opacity-50 hidden md:block">
                     <div class="text-[10px] font-mono text-srini-accent">AI_CORE: ACTIVE</div>
@@ -86,22 +159,27 @@
 
                 <div class="max-w-5xl">
                     <div class="reveal">
-                        <div class="font-mono text-srini-accent text-xs mb-6 border border-srini-accent/20 inline-block px-2 py-1 bg-srini-accent/10">
+                        <div
+                            class="font-mono text-srini-accent text-xs mb-6 border border-srini-accent/20 inline-block px-2 py-1 bg-srini-accent/10">
                             >> ARCHITECTURE: MULTI-AGENTIC
                         </div>
-                        
+
                         <!-- HEADLINE -->
-                        <h1 class="text-6xl md:text-9xl font-black tracking-tighter text-white mb-8 leading-[0.9] type-target" data-text="AI ERP IN 3 WEEKS.">
+                        <h1 class="text-6xl md:text-9xl font-black tracking-tighter text-white mb-8 leading-[0.9] type-target"
+                            data-text="AI ERP IN 3 WEEKS.">
                             AI ERP IN<br>
-                            <span class="text-transparent bg-clip-text bg-gradient-to-r from-white to-srini-wise">3 WEEKS.</span>
+                            <span class="text-transparent bg-clip-text bg-gradient-to-r from-white to-srini-wise">3
+                                WEEKS.</span>
                         </h1>
 
-                        <p class="text-xl text-gray-400 max-w-2xl mb-12 font-light border-l-2 border-srini-accent pl-6 leading-relaxed">
+                        <p
+                            class="text-xl text-gray-400 max-w-2xl mb-12 font-light border-l-2 border-srini-accent pl-6 leading-relaxed">
                             We put your operations on rails. You focus on revenue.
                         </p>
-                        
+
                         <div class="flex flex-col sm:flex-row gap-4">
-                            <a href="#contact" class="px-10 py-5 bg-srini-accent text-white font-bold font-mono text-sm uppercase tracking-widest hover:bg-white hover:text-black transition-colors text-center shadow-[0_0_20px_rgba(217,37,37,0.3)] hover:shadow-[0_0_30px_rgba(217,37,37,0.6)]">
+                            <a href="#contact"
+                                class="px-10 py-5 bg-srini-accent text-white font-bold font-mono text-sm uppercase tracking-widest hover:bg-white hover:text-black transition-colors text-center shadow-[0_0_20px_rgba(217,37,37,0.3)] hover:shadow-[0_0_30px_rgba(217,37,37,0.6)]">
                                 Acquire Control
                             </a>
                         </div>
@@ -110,16 +188,27 @@
 
                 <!-- Metrics -->
                 <div class="mt-24 grid grid-cols-2 md:grid-cols-4 border-t border-srini-card bg-black/50 backdrop-blur">
-                    <div class="p-8 border-r border-srini-card reveal delay-100 group hover:bg-srini-card/50 transition-colors">
-                        <div class="text-3xl font-mono font-bold text-white group-hover:text-srini-accent transition-colors">21<span class="text-sm text-srini-wise ml-1">DAYS</span></div>
-                        <div class="text-[10px] text-srini-wise uppercase tracking-widest mt-2">To Autonomous Operations</div>
+                    <div
+                        class="p-8 border-r border-srini-card reveal delay-100 group hover:bg-srini-card/50 transition-colors">
+                        <div
+                            class="text-3xl font-mono font-bold text-white group-hover:text-srini-accent transition-colors">
+                            21<span class="text-sm text-srini-wise ml-1">DAYS</span></div>
+                        <div class="text-[10px] text-srini-wise uppercase tracking-widest mt-2">To Autonomous Operations
+                        </div>
                     </div>
-                    <div class="p-8 border-r border-srini-card reveal delay-200 group hover:bg-srini-card/50 transition-colors">
-                        <div class="text-3xl font-mono font-bold text-white group-hover:text-srini-accent transition-colors">0<span class="text-sm text-srini-wise ml-1">MS</span></div>
-                        <div class="text-[10px] text-srini-wise uppercase tracking-widest mt-2">Latency in Decision Making</div>
+                    <div
+                        class="p-8 border-r border-srini-card reveal delay-200 group hover:bg-srini-card/50 transition-colors">
+                        <div
+                            class="text-3xl font-mono font-bold text-white group-hover:text-srini-accent transition-colors">
+                            0<span class="text-sm text-srini-wise ml-1">MS</span></div>
+                        <div class="text-[10px] text-srini-wise uppercase tracking-widest mt-2">Latency in Decision
+                            Making</div>
                     </div>
-                    <div class="p-8 border-r border-srini-card reveal delay-300 group hover:bg-srini-card/50 transition-colors">
-                        <div class="text-3xl font-mono font-bold text-white group-hover:text-srini-accent transition-colors">100<span class="text-sm text-srini-wise ml-1">%</span></div>
+                    <div
+                        class="p-8 border-r border-srini-card reveal delay-300 group hover:bg-srini-card/50 transition-colors">
+                        <div
+                            class="text-3xl font-mono font-bold text-white group-hover:text-srini-accent transition-colors">
+                            100<span class="text-sm text-srini-wise ml-1">%</span></div>
                         <div class="text-[10px] text-srini-wise uppercase tracking-widest mt-2">Margin Protection</div>
                     </div>
                     <div class="p-8 reveal delay-400 bg-srini-card flex flex-col justify-center">
@@ -137,40 +226,51 @@
             <div class="max-w-7xl mx-auto px-6 relative">
                 <div class="mb-12 reveal text-center">
                     <h2 class="text-3xl font-bold text-white mb-2">Executive Verification.</h2>
-                    <p class="text-srini-wise text-sm font-mono uppercase tracking-widest">The market's verdict on our execution.</p>
+                    <p class="text-srini-wise text-sm font-mono uppercase tracking-widest">The market's verdict on our
+                        execution.</p>
                 </div>
-                
+
                 <div class="relative h-64 max-w-4xl mx-auto testimonial-container reveal delay-100">
                     <!-- Javed -->
-                    <div class="testimonial-slide absolute inset-0 transition-opacity duration-1000 opacity-100 z-10 flex flex-col justify-center items-center text-center">
-                        <div class="text-srini-accent text-5xl font-serif mb-6 leading-none absolute -top-4 opacity-20">"</div>
+                    <div
+                        class="testimonial-slide absolute inset-0 transition-opacity duration-1000 opacity-100 z-10 flex flex-col justify-center items-center text-center">
+                        <div class="text-srini-accent text-5xl font-serif mb-6 leading-none absolute -top-4 opacity-20">
+                            "</div>
                         <p class="text-gray-300 text-xl md:text-2xl mb-8 leading-relaxed font-light z-10">
-                            "Absolute technical dominance. Mosses is an architect capable of building and executing any infrastructural requirement. The capability ceiling does not exist."
+                            "Absolute technical dominance. Mosses is an architect capable of building and executing any
+                            infrastructural requirement. The capability ceiling does not exist."
                         </p>
                         <div class="flex items-center gap-4 justify-center">
-                            <div class="w-10 h-10 bg-srini-card rounded-full flex items-center justify-center text-srini-wise font-bold font-mono text-xs border border-gray-800">
+                            <div
+                                class="w-10 h-10 bg-srini-card rounded-full flex items-center justify-center text-srini-wise font-bold font-mono text-xs border border-gray-800">
                                 JA
                             </div>
                             <div class="text-left">
                                 <div class="text-white font-bold font-mono text-sm">Javed</div>
-                                <div class="text-srini-wise text-xs uppercase tracking-widest">HR Manager, Extreme Marine</div>
+                                <div class="text-srini-wise text-xs uppercase tracking-widest">HR Manager, Extreme
+                                    Marine</div>
                             </div>
                         </div>
                     </div>
 
                     <!-- Easwaran -->
-                    <div class="testimonial-slide absolute inset-0 transition-opacity duration-1000 opacity-0 z-0 flex flex-col justify-center items-center text-center">
-                        <div class="text-srini-accent text-5xl font-serif mb-6 leading-none absolute -top-4 opacity-20">"</div>
+                    <div
+                        class="testimonial-slide absolute inset-0 transition-opacity duration-1000 opacity-0 z-0 flex flex-col justify-center items-center text-center">
+                        <div class="text-srini-accent text-5xl font-serif mb-6 leading-none absolute -top-4 opacity-20">
+                            "</div>
                         <p class="text-gray-300 text-xl md:text-2xl mb-8 leading-relaxed font-light z-10">
-                            "He ignores the noise and executes. Our revenue cycle was engineered and automated with a ruthlessness and precision I have rarely encountered in this industry."
+                            "He ignores the noise and executes. Our revenue cycle was engineered and automated with a
+                            ruthlessness and precision I have rarely encountered in this industry."
                         </p>
                         <div class="flex items-center gap-4 justify-center">
-                            <div class="w-10 h-10 bg-srini-card rounded-full flex items-center justify-center text-srini-wise font-bold font-mono text-xs border border-gray-800">
+                            <div
+                                class="w-10 h-10 bg-srini-card rounded-full flex items-center justify-center text-srini-wise font-bold font-mono text-xs border border-gray-800">
                                 EA
                             </div>
                             <div class="text-left">
                                 <div class="text-white font-bold font-mono text-sm">Easwaran</div>
-                                <div class="text-srini-wise text-xs uppercase tracking-widest">Founder, SV Promoters</div>
+                                <div class="text-srini-wise text-xs uppercase tracking-widest">Founder, SV Promoters
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -184,45 +284,62 @@
                 <div class="flex items-center gap-4 mb-16 reveal">
                     <div class="w-1 h-12 bg-srini-accent"></div>
                     <div>
-                         <h2 class="text-3xl font-bold text-white">Primary Architectures.</h2>
-                         <p class="text-srini-wise text-sm mt-1">Full ERP systems and autonomous orchestrators. Tailored for dominance.</p>
+                        <h2 class="text-3xl font-bold text-white">Primary Architectures.</h2>
+                        <p class="text-srini-wise text-sm mt-1">Full ERP systems and autonomous orchestrators. Tailored
+                            for dominance.</p>
                     </div>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-1">
                     <!-- Feature 1: Full ERP -->
-                    <div class="bg-srini-card p-8 border border-transparent hover:border-srini-wise transition-all reveal group">
+                    <div
+                        class="bg-srini-card p-8 border border-transparent hover:border-srini-wise transition-all reveal group">
                         <div class="flex justify-between items-start mb-6">
                             <span class="text-srini-accent font-mono text-xs">[01]</span>
-                            <span class="text-srini-wise font-mono text-[10px] border border-gray-800 px-1">FULL_ERP</span>
+                            <span
+                                class="text-srini-wise font-mono text-[10px] border border-gray-800 px-1">FULL_ERP</span>
                         </div>
-                        <h3 class="text-white font-bold mb-2 group-hover:text-srini-accent transition-colors">Custom Enterprise ERP</h3>
-                        <p class="text-gray-500 text-sm leading-relaxed mb-6">End-to-end operational software tailored strictly to your business logic. We eliminate bloatware, unifying finance, HR, and operations into a single source of absolute truth.</p>
+                        <h3 class="text-white font-bold mb-2 group-hover:text-srini-accent transition-colors">Custom
+                            Enterprise ERP</h3>
+                        <p class="text-gray-500 text-sm leading-relaxed mb-6">End-to-end operational software tailored
+                            strictly to your business logic. We eliminate bloatware, unifying finance, HR, and
+                            operations into a single source of absolute truth.</p>
                     </div>
 
                     <!-- Feature 2: Multi-Agentic Supply Chain -->
-                    <div class="bg-srini-card p-8 border border-transparent hover:border-srini-wise transition-all reveal delay-100 group">
+                    <div
+                        class="bg-srini-card p-8 border border-transparent hover:border-srini-wise transition-all reveal delay-100 group">
                         <div class="flex justify-between items-start mb-6">
                             <span class="text-srini-accent font-mono text-xs">[02]</span>
-                            <span class="text-srini-wise font-mono text-[10px] border border-gray-800 px-1">AI_ORCHESTRATOR</span>
+                            <span
+                                class="text-srini-wise font-mono text-[10px] border border-gray-800 px-1">AI_ORCHESTRATOR</span>
                         </div>
-                        <h3 class="text-white font-bold mb-2 group-hover:text-srini-accent transition-colors">Supply Chain Orchestrator</h3>
-                        <p class="text-gray-500 text-sm leading-relaxed mb-6">A decentralized network of specialized AI agents. They ingest live IoT and market feeds, autonomously reroute cargo, and execute self-healing workflows with zero latency.</p>
+                        <h3 class="text-white font-bold mb-2 group-hover:text-srini-accent transition-colors">Supply
+                            Chain Orchestrator</h3>
+                        <p class="text-gray-500 text-sm leading-relaxed mb-6">A decentralized network of specialized AI
+                            agents. They ingest live IoT and market feeds, autonomously reroute cargo, and execute
+                            self-healing workflows with zero latency.</p>
                     </div>
-                     
+
                     <!-- Feature 3: CTRL -->
-                    <div class="bg-srini-card p-8 border border-srini-danger/20 hover:border-srini-danger transition-all reveal delay-200 group">
+                    <div
+                        class="bg-srini-card p-8 border border-srini-danger/20 hover:border-srini-danger transition-all reveal delay-200 group">
                         <div class="flex justify-between items-start mb-6">
                             <span class="text-srini-danger font-mono text-xs">[03]</span>
-                            <span class="text-srini-danger font-mono text-[10px] border border-srini-danger/30 px-1">CTRL_PROTOCOL</span>
+                            <span
+                                class="text-srini-danger font-mono text-[10px] border border-srini-danger/30 px-1">CTRL_PROTOCOL</span>
                         </div>
-                        <h3 class="text-white font-bold mb-2 group-hover:text-srini-danger transition-colors">Safe & Governed Execution</h3>
-                        <p class="text-gray-400 text-sm leading-relaxed mb-6">Absolute control mechanisms. Strict economic guardrails and financial circuit breakers prevent AI errors, protecting your margins while flawlessly syncing to the main ledger.</p>
+                        <h3 class="text-white font-bold mb-2 group-hover:text-srini-danger transition-colors">Safe &
+                            Governed Execution</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-6">Absolute control mechanisms. Strict
+                            economic guardrails and financial circuit breakers prevent AI errors, protecting your
+                            margins while flawlessly syncing to the main ledger.</p>
                     </div>
                 </div>
 
                 <div class="mt-12 text-center reveal">
-                    <a href="services.html" class="inline-block border-b border-srini-wise text-srini-wise font-mono text-xs uppercase tracking-widest hover:text-white hover:border-white transition-colors pb-1">
+                    <a href="services.html"
+                        class="inline-block border-b border-srini-wise text-srini-wise font-mono text-xs uppercase tracking-widest hover:text-white hover:border-white transition-colors pb-1">
                         Explore All Tailored Solutions ->
                     </a>
                 </div>
@@ -233,20 +350,23 @@
         <section id="speed" class="py-32 bg-white text-black relative z-20">
             <div class="max-w-7xl mx-auto px-6">
                 <div class="mb-20 reveal">
-                    <h2 class="text-6xl md:text-8xl font-black tracking-tighter leading-none mb-4">DEPLOY IN<br>21 DAYS.</h2>
+                    <h2 class="text-6xl md:text-8xl font-black tracking-tighter leading-none mb-4">DEPLOY IN<br>21 DAYS.
+                    </h2>
                     <div class="h-2 w-full bg-black"></div>
                 </div>
-                
+
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-12 font-mono">
                     <div class="reveal delay-100">
                         <div class="text-sm font-bold mb-4 bg-black text-white inline-block px-2">WEEK 01</div>
                         <h3 class="text-2xl font-bold mb-4">Agent Mapping</h3>
-                        <p class="text-gray-600 text-sm">We audit your operational friction points and map the requisite AI agents. Logic schema established.</p>
+                        <p class="text-gray-600 text-sm">We audit your operational friction points and map the requisite
+                            AI agents. Logic schema established.</p>
                     </div>
                     <div class="reveal delay-200">
                         <div class="text-sm font-bold mb-4 bg-black text-white inline-block px-2">WEEK 02</div>
                         <h3 class="text-2xl font-bold mb-4">Sensory Integration</h3>
-                        <p class="text-gray-600 text-sm">Data pipelines connected. IoT, GPS, and market feeds routed into the central orchestrator.</p>
+                        <p class="text-gray-600 text-sm">Data pipelines connected. IoT, GPS, and market feeds routed
+                            into the central orchestrator.</p>
                     </div>
                     <div class="reveal delay-300">
                         <div class="text-sm font-bold mb-4 bg-black text-white inline-block px-2">WEEK 03</div>
@@ -273,30 +393,41 @@
 
                 <div class="border-t border-srini-card">
                     <!-- Article 1 -->
-                    <a href="blogs/off_the_shelf_death.html" class="block group border-b border-srini-card py-8 hover:bg-srini-card/30 transition-all reveal">
+                    <a href="blogs/off_the_shelf_death.html"
+                        class="block group border-b border-srini-card py-8 hover:bg-srini-card/30 transition-all reveal">
                         <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
                             <div class="flex items-center gap-6">
                                 <div class="text-xs font-mono text-srini-wise w-24">2026.02.20</div>
-                                <div class="text-xs font-mono text-srini-accent border border-srini-accent/20 px-2 py-0.5 rounded">STRATEGY</div>
+                                <div
+                                    class="text-xs font-mono text-srini-accent border border-srini-accent/20 px-2 py-0.5 rounded">
+                                    STRATEGY</div>
                             </div>
                             <div class="flex-grow">
-                                <h3 class="text-xl font-bold text-white group-hover:text-srini-accent transition-colors">Why "Off-the-Shelf" ERPs are Killing Your Cash Flow</h3>
+                                <h3
+                                    class="text-xl font-bold text-white group-hover:text-srini-accent transition-colors">
+                                    Why "Off-the-Shelf" ERPs are Killing Your Cash Flow</h3>
                             </div>
-                            <div class="text-srini-wise group-hover:text-srini-accent group-hover:translate-x-2 transition-all">-></div>
+                            <div
+                                class="text-srini-wise group-hover:text-srini-accent group-hover:translate-x-2 transition-all">
+                                -></div>
                         </div>
                     </a>
 
                     <!-- Article 2 -->
-                    <a href="blogs/the_21_day_myth.html" class="block group border-b border-srini-card py-8 hover:bg-srini-card/30 transition-all reveal delay-100">
+                    <a href="blogs/the_21_day_myth.html"
+                        class="block group border-b border-srini-card py-8 hover:bg-srini-card/30 transition-all reveal delay-100">
                         <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
                             <div class="flex items-center gap-6">
                                 <div class="text-xs font-mono text-srini-wise w-24">2026.02.24</div>
-                                <div class="text-xs font-mono text-white border border-gray-700 px-2 py-0.5 rounded">EXECUTION</div>
+                                <div class="text-xs font-mono text-white border border-gray-700 px-2 py-0.5 rounded">
+                                    EXECUTION</div>
                             </div>
                             <div class="flex-grow">
-                                <h3 class="text-xl font-bold text-white group-hover:text-white transition-colors">The 21-Day Myth: How We Actually Deploy Autonomous Logic</h3>
+                                <h3 class="text-xl font-bold text-white group-hover:text-white transition-colors">The
+                                    21-Day Myth: How We Actually Deploy Autonomous Logic</h3>
                             </div>
-                            <div class="text-srini-wise group-hover:text-white group-hover:translate-x-2 transition-all">
+                            <div
+                                class="text-srini-wise group-hover:text-white group-hover:translate-x-2 transition-all">
                                 -></div>
                         </div>
                     </a>
@@ -308,21 +439,28 @@
     <!-- CONTACT FOOTER -->
     <footer id="contact" class="bg-black py-32 border-t border-srini-card relative overflow-hidden z-20">
         <div class="max-w-4xl mx-auto px-6 relative z-10 text-center">
-            <h2 class="text-5xl font-bold text-white mb-10 tracking-tight">Establish Command.</h2>
-            
+            <h2 class="text-5xl font-bold text-white mb-10 tracking-tight">Demand Execution.</h2>
+
             <form id="deployment-form" class="max-w-xl mx-auto text-left font-mono">
                 <div class="bg-srini-card border border-srini-card p-8 shadow-2xl relative overflow-hidden group">
                     <div class="mb-8">
-                        <label class="text-[10px] text-srini-wise uppercase tracking-widest mb-2 block">System Deficiencies</label>
-                        <textarea id="exec-message" rows="4" class="w-full bg-black border border-srini-gray text-white p-3 focus:border-srini-accent focus:outline-none transition-colors resize-none" placeholder="Identify current operational bottlenecks..." required></textarea>
+                        <label class="text-[10px] text-srini-wise uppercase tracking-widest mb-4 block">Executive
+                            Directive (Edit or Send As-Is)</label>
+                        <textarea id="exec-message" rows="7"
+                            class="w-full bg-black border border-srini-gray text-white p-4 focus:border-srini-accent focus:outline-none transition-colors resize-none leading-relaxed"
+                            required>I am tired of slow consultants and bloated software killing our margins. We need to strip out operational bloat and scale our revenue capacity.
+
+Show me how you deploy in 21 days. Let's talk.</textarea>
                     </div>
-                    <button type="submit" class="w-full bg-white text-black font-bold py-4 hover:bg-srini-accent hover:text-white transition-colors uppercase tracking-widest text-sm relative z-10">
-                        Email
+                    <button type="submit"
+                        class="w-full bg-white text-black font-bold py-4 hover:bg-srini-accent hover:text-white transition-colors uppercase tracking-widest text-sm relative z-10">
+                        FORCE EXECUTION ->
                     </button>
                 </div>
             </form>
 
-            <div class="mt-24 flex justify-between items-end text-[10px] font-mono text-srini-wise border-t border-srini-card pt-6">
+            <div
+                class="mt-24 flex justify-between items-end text-[10px] font-mono text-srini-wise border-t border-srini-card pt-6">
                 <div>
                     SRINI CORP &copy; 2026<br>
                     ALL RIGHTS RESERVED
@@ -374,9 +512,9 @@
             setInterval(() => {
                 slides[currentSlide].classList.remove('opacity-100', 'z-10');
                 slides[currentSlide].classList.add('opacity-0', 'z-0');
-                
+
                 currentSlide = (currentSlide + 1) % slides.length;
-                
+
                 slides[currentSlide].classList.remove('opacity-0', 'z-0');
                 slides[currentSlide].classList.add('opacity-100', 'z-10');
             }, 6000);
@@ -388,17 +526,15 @@
 
         form.addEventListener('submit', (e) => {
             e.preventDefault();
-            
+
             const message = encodeURIComponent(messageBox.value);
             const targetEmail = "deploy@srinicorp.com"; // Set your actual receiving address here
-            const subject = encodeURIComponent("INITIATE DEPLOYMENT: SYSTEM DEFICIENCIES");
-            
+            const subject = encodeURIComponent("EXECUTIVE DIRECTIVE: SCALE REVENUE");
+
             // Route directly to the executive's native mail client. Absolute control.
             window.location.href = `mailto:${targetEmail}?subject=${subject}&body=${message}`;
-            
-            // Clear the terminal after execution
-            messageBox.value = '';
         });
     </script>
 </body>
+
 </html>
