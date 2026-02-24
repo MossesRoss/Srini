@@ -137,6 +137,8 @@
                 <a href="team.html"
                     class="text-[10px] font-mono font-bold uppercase tracking-[0.2em] text-srini-wise hover:text-white transition-colors">The
                     Board</a>
+                <a href="catalogs/index.html"
+                    class="text-[10px] font-mono font-bold uppercase tracking-[0.2em] text-srini-accent hover:text-white transition-colors">Catalogue</a>
             </div>
 
             <a href="#contact"
@@ -392,9 +394,28 @@
                 </div>
 
                 <div class="border-t border-srini-card">
+                    <!-- Article 0 (The PDF Dossier) -->
+                    <a href="catalogs/index.html"
+                        class="block group border-b border-srini-card py-8 hover:bg-srini-card/30 transition-all reveal">
+                        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                            <div class="flex items-center gap-6">
+                                <div class="text-xs font-mono text-srini-wise w-24">2026.02.24</div>
+                                <div class="text-xs font-mono text-black bg-white px-2 py-0.5 rounded font-bold">
+                                    CATALOGUE</div>
+                            </div>
+                            <div class="flex-grow">
+                                <h3 class="text-xl font-bold text-white group-hover:text-white transition-colors">ASCOP
+                                    Protocol: The Architectural Specifications</h3>
+                            </div>
+                            <div
+                                class="text-srini-wise group-hover:text-white group-hover:translate-x-2 transition-all">
+                                -></div>
+                        </div>
+                    </a>
+
                     <!-- Article 1 -->
                     <a href="blogs/off_the_shelf_death.html"
-                        class="block group border-b border-srini-card py-8 hover:bg-srini-card/30 transition-all reveal">
+                        class="block group border-b border-srini-card py-8 hover:bg-srini-card/30 transition-all reveal delay-100">
                         <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
                             <div class="flex items-center gap-6">
                                 <div class="text-xs font-mono text-srini-wise w-24">2026.02.20</div>
@@ -531,7 +552,7 @@ Show me how you deploy in 21 days. Let's talk.</textarea>
             e.preventDefault();
 
             const message = encodeURIComponent(messageBox.value);
-            const targetEmail = "deploy@srinicorp.com"; // Set your actual receiving address here
+            const targetEmail = "contact@srinicorp.com"; // Set your actual receiving address here
             const subject = encodeURIComponent("EXECUTIVE DIRECTIVE: SCALE REVENUE");
 
             // Route directly to the executive's native mail client. Absolute control.
