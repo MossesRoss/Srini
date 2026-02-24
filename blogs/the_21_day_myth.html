@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SRINI INTEL | The 21-Day Myth</title>
+    
+    <link rel="icon" type="image/png" href="../favicon.png">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'srini-black': '#050505',
+                        'srini-gray': '#121212',
+                        'srini-card': '#1a1a1a',
+                        'srini-accent': '#D92525',
+                        'srini-wise': '#555555',
+                        'srini-danger': '#FF3333',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #050505; color: #E5E5E5; overflow-x: hidden; }
+        .bottom-fade {
+            position: fixed; bottom: 0; left: 0; width: 100%; height: 15vh;
+            background: linear-gradient(to top, #050505 0%, transparent 100%);
+            pointer-events: none; z-index: 45;
+        }
+    </style>
+</head>
+<body class="antialiased font-sans bg-srini-black">
+    <div class="bottom-fade"></div>
+    <nav class="fixed w-full z-40 bg-srini-black/90 backdrop-blur-sm border-b border-srini-card">
+        <div class="max-w-4xl mx-auto px-6 h-16 flex items-center justify-between">
+            <a href="../index.html" class="flex items-center gap-2 text-sm font-mono text-srini-wise hover:text-white transition-colors">
+                <span class="text-srini-accent"><-</span> RETURN_TO_HQ
+            </a>
+            <div class="text-xs font-mono text-white border border-gray-700 px-2 py-1 bg-gray-900/50">
+                INTEL :: PUBLIC_RELEASE
+            </div>
+        </div>
+    </nav>
+
+    <!-- Content -->
+    <main class="pt-32 pb-32">
+        <article class="max-w-3xl mx-auto px-6">
+            
+            <!-- Header -->
+            <div class="mb-12 border-b border-srini-card pb-8">
+                <div class="flex gap-4 mb-6 text-xs font-mono text-gray-500">
+                    <span>DATE: 2026.02.24</span>
+                    <span>AUTHOR: Mosses</span>
+                    <span>TAG: EXECUTION</span>
+                </div>
+                <h1 class="text-4xl md:text-5xl font-black text-white tracking-tight leading-tight mb-6">
+                    The 21-Day Myth: How We Actually <span class="text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-500">Deploy Autonomous Logic.</span>
+                </h1>
+                <p class="text-xl text-srini-accent font-mono text-sm uppercase tracking-widest leading-relaxed">
+                    Consultancies sell you time. We sell you power.
+                </p>
+            </div>
+
+            <!-- Body -->
+            <div class="prose-custom font-sans text-lg space-y-8 text-gray-300 font-light">
+                <p>
+                    The industry standard for an enterprise software deployment is 18 to 24 months. This is not a technical requirement. It is a manufactured timeline designed by legacy consultancies to extract maximum capital through hourly billing. It is an insult to modern engineering.
+                </p>
+
+                <p>
+                    Here is the ruthless reality: Your operations are not as "unique and complicated" as legacy architects pretend they are. Underneath the corporate noise, your supply chain is just a series of logical variables and data pipelines. 
+                </p>
+
+                <p>
+                    It does not take two years to map variables. It takes 21 days.
+                </p>
+
+                <div class="border-l border-srini-card pl-6 py-2 my-8">
+                    <h3 class="text-white font-bold font-mono text-sm uppercase tracking-widest mb-2">The Execution Protocol</h3>
+                    <ul class="space-y-4 text-base">
+                        <li><strong class="text-white">Week 1 (Logic Extraction):</strong> We audit your operational friction points. We do not do "workshops." We extract the exact math required to run your business and map the agentic schema.</li>
+                        <li><strong class="text-white">Week 2 (Sensory Pipeline):</strong> We connect your existing data feeds, ledgers, and IoT sensors directly into the central orchestrator. Zero latency established.</li>
+                        <li><strong class="text-white">Week 3 (Weaponization):</strong> We install the financial circuit breakers, activate the agent network, and hand you the keys.</li>
+                    </ul>
+                </div>
+
+                <p>
+                    We do not want a five-year retainer to maintain your bloated software. We want 21 days to put your operations on rails and give you absolute control of the logic.
+                </p>
+            </div>
+
+            <!-- Footer CTA -->
+            <div class="mt-20 p-8 border border-srini-card bg-black group hover:border-srini-accent transition-all">
+                <h3 class="text-white font-bold mb-2">The Binary Choice.</h3>
+                <p class="text-gray-500 text-sm mb-8">
+                    If you enjoy bleeding capital to slow-moving consultants, close this tab. If you want operational dominance before the end of next month, initialize contact.
+                </p>
+                <a href="../index.html#contact" class="inline-block border border-srini-danger text-srini-danger bg-srini-danger/5 px-8 py-4 font-mono text-xs font-bold uppercase tracking-widest hover:bg-srini-danger hover:text-white transition-all">
+                    Acquire Control ->
+                </a>
+            </div>
+
+        </article>
+    </main>
+
+</body>
+</html>

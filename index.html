@@ -273,10 +273,10 @@
 
                 <div class="border-t border-srini-card">
                     <!-- Article 1 -->
-                    <a href="#" class="block group border-b border-srini-card py-8 hover:bg-srini-card/30 transition-all reveal">
+                    <a href="blogs/off_the_shelf_death.html" class="block group border-b border-srini-card py-8 hover:bg-srini-card/30 transition-all reveal">
                         <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
                             <div class="flex items-center gap-6">
-                                <div class="text-xs font-mono text-srini-wise w-24">2026.02.14</div>
+                                <div class="text-xs font-mono text-srini-wise w-24">2026.02.20</div>
                                 <div class="text-xs font-mono text-srini-accent border border-srini-accent/20 px-2 py-0.5 rounded">STRATEGY</div>
                             </div>
                             <div class="flex-grow">
@@ -287,10 +287,10 @@
                     </a>
 
                     <!-- Article 2 -->
-                    <a href="#" class="block group border-b border-srini-card py-8 hover:bg-srini-card/30 transition-all reveal delay-100">
+                    <a href="blogs/the_21_day_myth.html" class="block group border-b border-srini-card py-8 hover:bg-srini-card/30 transition-all reveal delay-100">
                         <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
                             <div class="flex items-center gap-6">
-                                <div class="text-xs font-mono text-srini-wise w-24">2026.01.30</div>
+                                <div class="text-xs font-mono text-srini-wise w-24">2026.02.24</div>
                                 <div class="text-xs font-mono text-white border border-gray-700 px-2 py-0.5 rounded">EXECUTION</div>
                             </div>
                             <div class="flex-grow">
@@ -312,22 +312,12 @@
             
             <form id="deployment-form" class="max-w-xl mx-auto text-left font-mono">
                 <div class="bg-srini-card border border-srini-card p-8 shadow-2xl relative overflow-hidden group">
-                    <!-- Loading overlay for UX control -->
-                    <div id="form-overlay" class="absolute inset-0 bg-srini-black/90 z-20 flex flex-col items-center justify-center opacity-0 pointer-events-none transition-opacity duration-300">
-                        <div class="text-srini-accent text-xs mb-2 animate-pulse">ENCRYPTING PAYLOAD...</div>
-                        <div id="form-status" class="text-white text-sm tracking-widest uppercase">TRANSMITTING</div>
-                    </div>
-
-                    <div class="mb-6">
-                        <label class="text-[10px] text-srini-wise uppercase tracking-widest mb-2 block">Executive Email</label>
-                        <input type="email" id="exec-email" class="w-full bg-black border border-srini-gray text-white p-3 focus:border-srini-accent focus:outline-none transition-colors" placeholder="ceo@enterprise.com" required>
-                    </div>
                     <div class="mb-8">
                         <label class="text-[10px] text-srini-wise uppercase tracking-widest mb-2 block">System Deficiencies</label>
                         <textarea id="exec-message" rows="4" class="w-full bg-black border border-srini-gray text-white p-3 focus:border-srini-accent focus:outline-none transition-colors resize-none" placeholder="Identify current operational bottlenecks..." required></textarea>
                     </div>
                     <button type="submit" class="w-full bg-white text-black font-bold py-4 hover:bg-srini-accent hover:text-white transition-colors uppercase tracking-widest text-sm relative z-10">
-                        Request Deployment
+                        Email
                     </button>
                 </div>
             </form>
@@ -392,29 +382,22 @@
             }, 6000);
         }
 
-        // Form Control Logic - Severs 3rd Party Liability
+        // Form Control Logic - Direct Protocol (Zero-Intermediary)
         const form = document.getElementById('deployment-form');
-        const overlay = document.getElementById('form-overlay');
-        const statusText = document.getElementById('form-status');
+        const messageBox = document.getElementById('exec-message');
 
         form.addEventListener('submit', (e) => {
             e.preventDefault();
             
-            // Trigger visual lockdown
-            overlay.classList.remove('opacity-0', 'pointer-events-none');
+            const message = encodeURIComponent(messageBox.value);
+            const targetEmail = "deploy@srinicorp.com"; // Set your actual receiving address here
+            const subject = encodeURIComponent("INITIATE DEPLOYMENT: SYSTEM DEFICIENCIES");
             
-            // Simulate encrypted internal routing
-            setTimeout(() => {
-                statusText.innerHTML = "DEPLOYMENT REQUEST SECURED.";
-                statusText.classList.add('text-green-500');
-                
-                setTimeout(() => {
-                    overlay.classList.add('opacity-0', 'pointer-events-none');
-                    form.reset();
-                    statusText.innerHTML = "TRANSMITTING";
-                    statusText.classList.remove('text-green-500');
-                }, 2000);
-            }, 1500);
+            // Route directly to the executive's native mail client. Absolute control.
+            window.location.href = `mailto:${targetEmail}?subject=${subject}&body=${message}`;
+            
+            // Clear the terminal after execution
+            messageBox.value = '';
         });
     </script>
 </body>
