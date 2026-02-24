@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asset Catalogue | SRINI CORP</title>
+
+    <link rel="icon" type="image/png" href="../favicon.png">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;900&family=JetBrains+Mono:wght@400;500;700&display=swap"
+        rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'srini-black': '#050505',
+                        'srini-card': '#1a1a1a',
+                        'srini-accent': '#D92525',
+                        'srini-wise': '#555555',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #050505;
+            color: #E5E5E5;
+            overflow-x: hidden;
+        }
+
+        .grid-bg {
+            background-image: linear-gradient(to right, #121212 1px, transparent 1px), linear-gradient(to bottom, #121212 1px, transparent 1px);
+            background-size: 50px 50px;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+
+<body class="antialiased font-sans pt-24 min-h-screen flex flex-col relative">
+
+    <div class="absolute inset-0 grid-bg opacity-30 z-0 pointer-events-none"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-40 bg-srini-black/90 backdrop-blur-sm border-b border-srini-card">
+        <div class="max-w-4xl mx-auto px-6 h-16 flex items-center justify-between">
+            <a href="../index.html"
+                class="flex items-center gap-2 text-sm font-mono text-srini-wise hover:text-white transition-colors">
+                <span class="text-srini-accent"><-< /span> RETURN_TO_HQ
+            </a>
+            <div
+                class="text-[10px] font-mono text-white border border-gray-700 px-2 py-1 bg-gray-900/50 uppercase tracking-widest">
+                ASSET_REPOSITORY
+            </div>
+        </div>
+    </nav>
+
+    <main class="flex-grow relative z-10 max-w-4xl mx-auto px-6 w-full pb-32">
+        <div class="mb-16 reveal pt-10 border-b border-srini-card pb-8">
+            <h1 class="text-5xl font-black mb-4 text-white tracking-tight">The Catalogue.</h1>
+            <p class="text-srini-wise font-mono text-sm uppercase tracking-widest leading-relaxed">
+                Raw architectural specifications and operational intel.
+            </p>
+        </div>
+
+        <div class="space-y-4 reveal delay-100">
+
+            <!-- Asset 1: ASCOP (Active) -->
+            <div
+                class="group border border-srini-card bg-black p-6 hover:border-white transition-all flex flex-col md:flex-row md:items-center justify-between gap-6">
+                <div class="flex items-center gap-6">
+                    <div class="text-4xl text-srini-card group-hover:text-srini-wise font-black transition-colors">01
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-white mb-1">ASCOP Protocol</h3>
+                        <p class="text-sm text-gray-500 font-mono">Autonomous Supply Chain Orchestration Paradigm</p>
+                    </div>
+                </div>
+                <!-- Links directly to the new Image Presentation Engine -->
+                <a href="ascop.html"
+                    class="shrink-0 inline-flex items-center justify-center border border-srini-wise text-white px-6 py-3 font-mono text-xs uppercase tracking-widest hover:bg-white hover:text-black transition-all">
+                    ACCESS PAYLOAD ->
+                </a>
+            </div>
+
+            <!-- Asset 2: Placeholder (Encrypted) -->
+            <div
+                class="border border-srini-card bg-black/50 p-6 opacity-60 flex flex-col md:flex-row md:items-center justify-between gap-6 relative overflow-hidden">
+                <div
+                    class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0IiBoZWlnaHQ9IjQiPgo8cmVjdCB3aWR0aD0iNCIgaGVpZ2h0PSI0IiBmaWxsPSIjMDUwNTA1Ij48L3JlY3Q+CjxyZWN0IHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9IiMxYTFhMWEiPjwvcmVjdD4KPC9zdmc+')] opacity-50 pointer-events-none">
+                </div>
+                <div class="flex items-center gap-6 relative z-10">
+                    <div class="text-4xl text-srini-card font-black">02</div>
+                    <div>
+                        <h3 class="text-xl font-bold text-gray-500 mb-1">CTRL Framework v2.0</h3>
+                        <p class="text-sm text-gray-600 font-mono">Financial Circuit Breaker Specs</p>
+                    </div>
+                </div>
+                <div
+                    class="shrink-0 text-srini-danger font-mono text-xs uppercase tracking-widest flex items-center gap-2 relative z-10">
+                    <span class="w-2 h-2 bg-srini-danger rounded-full"></span> ENCRYPTED
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="border-t border-srini-card py-8 relative z-10">
+        <div class="max-w-4xl mx-auto px-6 text-center text-[10px] font-mono text-srini-wise uppercase tracking-widest">
+            ALL ASSETS CLASSIFIED UNTIL DEPLOYMENT. SRINI CORP &copy; 2026.
+        </div>
+    </footer>
+
+    <script>
+        const revealElements = document.querySelectorAll(".reveal");
+        const revealOnScroll = () => {
+            const windowHeight = window.innerHeight;
+            revealElements.forEach((reveal) => {
+                const elementTop = reveal.getBoundingClientRect().top;
+                if (elementTop < windowHeight - 50) reveal.classList.add("active");
+            });
+        };
+        window.addEventListener("scroll", revealOnScroll);
+        revealOnScroll();
+    </script>
+</body>
+
+</html>
