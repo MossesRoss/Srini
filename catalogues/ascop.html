@@ -45,38 +45,39 @@
             background-size: 50px 50px;
         }
 
-        .slide-img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
+        /* Slide Logic */
+        .slide {
             opacity: 0;
-            transition: opacity 0.4s ease-in-out;
+            pointer-events: none;
+            transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 10;
         }
 
-        .slide-img.active {
+        .slide.active {
             opacity: 1;
+            pointer-events: auto;
+            z-index: 20;
         }
 
-        /* Invisible click zones for navigation */
+        /* Invisible click zones */
         .nav-zone {
             position: absolute;
             top: 64px;
             bottom: 0;
-            z-index: 20;
+            z-index: 30;
             cursor: pointer;
         }
 
         .nav-zone-left {
             left: 0;
-            width: 30%;
+            width: 25%;
         }
 
         .nav-zone-right {
             right: 0;
-            width: 70%;
+            width: 75%;
         }
 
-        /* Custom progress bar */
         .progress-container {
             width: 100%;
             height: 2px;
@@ -84,58 +85,242 @@
             position: absolute;
             bottom: 0;
             left: 0;
-            z-index: 30;
+            z-index: 40;
         }
 
         .progress-bar {
             height: 100%;
             background: #D92525;
-            transition: width 0.3s ease;
+            transition: width 0.4s ease;
         }
     </style>
 </head>
 
 <body class="antialiased font-sans flex flex-col h-screen relative select-none">
 
-    <div class="absolute inset-0 grid-bg opacity-30 z-0 pointer-events-none"></div>
+    <div class="absolute inset-0 grid-bg opacity-20 z-0 pointer-events-none"></div>
 
     <!-- HUD Header -->
-    <nav class="w-full z-40 bg-srini-black/90 backdrop-blur border-b border-srini-card shrink-0 relative">
+    <nav class="w-full z-50 bg-srini-black/90 backdrop-blur border-b border-srini-card shrink-0 relative">
         <div class="px-6 h-16 flex items-center justify-between">
             <a href="index.html"
-                class="flex items-center gap-2 text-sm font-mono text-srini-wise hover:text-white transition-colors z-30">
-                <span class="text-srini-accent"><-< /span> ABORT_VIEW
-            </a>
+                class="flex items-center gap-2 text-[10px] md:text-sm font-mono text-srini-accent hover:text-white transition-colors z-40">
+                <- ABORT_VIEW </a>
 
-            <div
-                class="hidden md:flex items-center gap-4 text-xs font-mono absolute left-1/2 transform -translate-x-1/2 pointer-events-none">
-                <span class="text-srini-wise tracking-widest">ASSET: ASCOP_PROTOCOL</span>
-                <span class="text-srini-accent animate-pulse ml-2">●</span>
-            </div>
+                    <div
+                        class="hidden md:flex items-center gap-4 text-[10px] font-mono absolute left-1/2 transform -translate-x-1/2 pointer-events-none">
+                        <span class="text-srini-wise tracking-widest uppercase">ASSET: ASCOP_PROTOCOL</span>
+                        <span class="text-srini-accent animate-pulse ml-2">●</span>
+                    </div>
 
-            <div class="text-xs font-mono text-white tracking-widest z-30 flex items-center gap-4">
-                <span id="slide-counter" class="text-srini-wise">01 / 04</span>
-                <a href="../index.html#contact"
-                    class="px-4 py-2 border border-srini-danger text-srini-danger bg-srini-danger/5 hover:bg-srini-danger hover:text-white transition-colors">
-                    EXECUTE ->
-                </a>
-            </div>
+                    <div class="text-[10px] font-mono text-white tracking-widest z-40 flex items-center gap-6">
+                        <span id="slide-counter" class="text-srini-wise hidden sm:inline-block">01 / 04</span>
+                        <a href="../index.html#contact"
+                            class="px-6 py-2 border border-srini-wise text-white hover:border-white hover:bg-white hover:text-black transition-colors uppercase font-bold">
+                            EXECUTE ->
+                        </a>
+                    </div>
         </div>
     </nav>
 
     <!-- Presentation Canvas -->
-    <main class="flex-grow relative z-10 w-full flex items-center justify-center bg-black">
+    <main class="flex-grow relative w-full h-full bg-srini-black overflow-hidden">
 
-        <!-- Images injected here -->
-        <img id="viewer-image" src="" class="slide-img active" alt="ASCOP Documentation">
+        <!-- SLIDE 1: THE BLEED -->
+        <div class="slide absolute inset-0 flex flex-col pt-16 px-6 md:px-24 pb-12 overflow-y-auto active" id="slide-0">
+            <div class="max-w-6xl mx-auto w-full flex-grow flex flex-col justify-center">
+                <h2 class="text-5xl md:text-[6rem] font-black text-white uppercase tracking-tighter leading-[0.9] mb-8">
+                    Your ERP is <br><span class="text-srini-accent">24 Hours Late.</span>
+                </h2>
+                <p
+                    class="text-xl md:text-2xl text-gray-400 max-w-4xl mb-16 font-light border-l-2 border-srini-accent pl-6">
+                    In wholesale, batch processing is a competitive liability. If your system merely predicts
+                    disruptions instead of autonomously executing real-time corrections, you are actively choosing to
+                    lose money.
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 border-t border-srini-card pt-10">
+                    <div>
+                        <div
+                            class="text-[10px] font-mono text-srini-wise uppercase mb-3 border border-gray-800 inline-block px-2">
+                            Vulnerability_01</div>
+                        <h4 class="text-white font-bold mb-3 text-lg">The Static Pricing Penalty</h4>
+                        <p class="text-sm text-gray-500 leading-relaxed">Legacy systems lock you into yesterday's cost
+                            to serve. You surrender margin on every transaction because pricing cannot react to intraday
+                            market shifts or hyper-local competitor signals.</p>
+                    </div>
+                    <div>
+                        <div
+                            class="text-[10px] font-mono text-srini-wise uppercase mb-3 border border-gray-800 inline-block px-2">
+                            Vulnerability_02</div>
+                        <h4 class="text-white font-bold mb-3 text-lg">The Autonomy Gap</h4>
+                        <p class="text-sm text-gray-500 leading-relaxed">Your warehouse RFID and in-transit fleet GPS
+                            generate data in milliseconds. Your legacy ERP processes it in hours. That delay is exactly
+                            when customers abandon you for a competitor who actually has the inventory.</p>
+                    </div>
+                    <div>
+                        <div
+                            class="text-[10px] font-mono text-srini-wise uppercase mb-3 border border-gray-800 inline-block px-2">
+                            Vulnerability_03</div>
+                        <h4 class="text-white font-bold mb-3 text-lg">The Rebate Failure Rate</h4>
+                        <p class="text-sm text-gray-500 leading-relaxed">Relying on human planners and spreadsheets to
+                            track complex, multi-tiered manufacturer incentives guarantees missed thresholds. You are
+                            leaving millions in vendor rebates on the table.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 2: THE BRAIN -->
+        <div class="slide absolute inset-0 flex flex-col pt-16 px-6 md:px-24 pb-12 overflow-y-auto" id="slide-1">
+            <div class="max-w-6xl mx-auto w-full flex-grow flex flex-col justify-center">
+                <h2 class="text-4xl md:text-7xl font-black text-white uppercase tracking-tighter leading-none mb-4">
+                    Don't Predict The Future.<br>Command It.
+                </h2>
+                <p
+                    class="text-sm md:text-lg text-srini-wise font-mono mb-12 border border-srini-card inline-block px-4 py-2 bg-srini-card/30">
+                    The Autonomous Multi-Agentic Supply Chain Orchestrator.
+                </p>
+
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    <div class="lg:col-span-2 space-y-4">
+                        <div class="p-6 bg-black border border-srini-card hover:border-srini-wise transition-colors">
+                            <p class="text-gray-400 text-sm leading-relaxed"><strong class="text-white text-base">The
+                                    Rebate & Dynamic Pricing Agent:</strong> Powered by Multi-Agent Reinforcement
+                                Learning (MARL). It dynamically adjusts B2B pricing in real time based on live metrics.
+                                Simultaneously, it routes purchasing volume to guarantee you hit maximum, lucrative
+                                manufacturer incentive thresholds. <span
+                                    class="text-srini-accent block mt-3 font-mono text-[10px] uppercase tracking-widest">RESULT:
+                                    0 MISSED REBATES. MAXIMIZED MARGIN.</span></p>
+                        </div>
+                        <div class="p-6 bg-black border border-srini-card hover:border-srini-wise transition-colors">
+                            <p class="text-gray-400 text-sm leading-relaxed"><strong class="text-white text-base">The
+                                    Autonomous Procurement Agent:</strong> Equipped with Agent-to-Agent protocols. It
+                                communicates directly with your upstream suppliers' AI systems to negotiate delivery
+                                dates, order quantities, and emergency terms instantly. <span
+                                    class="text-[#00ff9d] block mt-3 font-mono text-[10px] uppercase tracking-widest">RESULT:
+                                    REDUCES CYCLE TIMES BY 84%.</span></p>
+                        </div>
+                        <div class="p-6 bg-black border border-srini-card hover:border-srini-wise transition-colors">
+                            <p class="text-gray-400 text-sm leading-relaxed"><strong class="text-white text-base">The
+                                    Inventory & Logistics Agent:</strong> Continuous monitoring across all physical
+                                nodes. When a demand spike or transit disruption occurs, it autonomously reroutes
+                                shipments, rebalances warehouse stock, and triggers predictive replenishment. <span
+                                    class="text-srini-accent block mt-3 font-mono text-[10px] uppercase tracking-widest">RESULT:
+                                    ZERO STOCKOUTS. TOTAL ASSET UTILIZATION.</span></p>
+                        </div>
+                    </div>
+
+                    <div
+                        class="bg-srini-card/50 border border-srini-card p-8 flex flex-col justify-center relative overflow-hidden">
+                        <div class="relative z-10">
+                            <div
+                                class="text-6xl md:text-8xl font-black text-[#00ff9d] mb-4 tracking-tighter leading-none">
+                                $2M</div>
+                            <p class="text-sm text-gray-400 leading-relaxed font-mono">
+                                A $50M wholesale distributor loses an average of 1.2% in margin to delayed pricing
+                                adjustments and 3% in uncollected Tier 2 vendor rebates. That is a $2.1M annual
+                                bleed.<br><br><span
+                                    class="text-white font-bold block border-t border-gray-700 pt-4 mt-4">Our
+                                    orchestration engine targets this exact delta.</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 3: THE ARMOR -->
+        <div class="slide absolute inset-0 flex flex-col pt-16 px-6 md:px-24 pb-12 overflow-y-auto" id="slide-2">
+            <div class="max-w-6xl mx-auto w-full flex-grow flex flex-col justify-center">
+                <h2 class="text-5xl md:text-[6rem] font-black text-white uppercase tracking-tighter leading-[0.9] mb-8">
+                    AI That Fixes Itself. <br><span class="text-srini-wise">Zero Downtime.</span>
+                </h2>
+                <p class="text-xl md:text-2xl text-gray-400 max-w-4xl mb-16 font-light">
+                    Autonomous execution requires unbreakable infrastructure. Our Self-Healing Remediation Engine
+                    ensures your supply chain never goes dark due to a broken data pipeline.
+                </p>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div
+                        class="p-10 border border-srini-card bg-black relative overflow-hidden group hover:border-srini-wise transition-colors">
+                        <div
+                            class="absolute top-0 left-0 w-1 h-full bg-srini-wise group-hover:bg-white transition-colors">
+                        </div>
+                        <h4 class="text-2xl text-white font-bold mb-4 font-mono tracking-tight">Autonomous Remediation
+                        </h4>
+                        <p class="text-gray-500 leading-relaxed">The system runs a root-cause analysis in milliseconds
+                            and automatically executes a remediation plan to reroute the data flow. Your supply chain
+                            transitions from merely "streaming" data to actively self-healing.</p>
+                    </div>
+                    <div
+                        class="p-10 border border-srini-card bg-black relative overflow-hidden group hover:border-srini-wise transition-colors">
+                        <div
+                            class="absolute top-0 left-0 w-1 h-full bg-srini-wise group-hover:bg-white transition-colors">
+                        </div>
+                        <h4 class="text-2xl text-white font-bold mb-4 font-mono tracking-tight">Automated Diagnostics
+                        </h4>
+                        <p class="text-gray-500 leading-relaxed">If an IoT sensor fails, an API breaks, or a data stream
+                            is interrupted, the cognitive model detects the fault instantly. It does not wait for a
+                            human IT ticket to be logged. It corrects and reports.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 4: THE CONTROL -->
+        <div class="slide absolute inset-0 flex flex-col pt-16 px-6 md:px-24 pb-12 overflow-y-auto" id="slide-3">
+            <div class="max-w-6xl mx-auto w-full flex-grow flex flex-col justify-center">
+                <div
+                    class="text-[10px] font-mono text-srini-accent border border-srini-accent/20 inline-block px-3 py-1 mb-8 bg-srini-accent/10 w-max tracking-widest">
+                    FINAL_PROTOCOL</div>
+                <h2 class="text-5xl md:text-[6rem] font-black text-white uppercase tracking-tighter leading-[0.9] mb-8">
+                    We Don't Replace Your ERP.<br>We Weaponize It.
+                </h2>
+                <p class="text-xl text-gray-400 max-w-3xl mb-16 font-light">
+                    Total autonomous capability, bound by strict economic guardrails.
+                </p>
+
+                <div class="space-y-8 max-w-4xl">
+                    <div class="flex gap-6 items-start border-b border-srini-card pb-8">
+                        <div class="text-srini-accent font-mono mt-1 border border-srini-accent/30 px-2 text-xs">01
+                        </div>
+                        <div>
+                            <h4 class="text-white font-bold text-xl mb-2">The Economic Guardrail Layer</h4>
+                            <p class="text-gray-500 leading-relaxed">Autonomous execution carries financial risk. We
+                                install unbreakable parameters. Set minimum margin requirements, maximum spend budgets,
+                                and strict vendor rules. The AI will never execute a decision that violates your profit
+                                floor.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-6 items-start border-b border-srini-card pb-8">
+                        <div class="text-srini-wise font-mono mt-1 border border-gray-700 px-2 text-xs">02</div>
+                        <div>
+                            <h4 class="text-white font-bold text-xl mb-2">Human-in-the-Loop Detection</h4>
+                            <p class="text-gray-500 leading-relaxed">Any high-risk anomaly or edge-case scenario is
+                                immediately flagged and routed to your executives for one-click approval before
+                                execution.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-6 items-start">
+                        <div class="text-srini-wise font-mono mt-1 border border-gray-700 px-2 text-xs">03</div>
+                        <div>
+                            <h4 class="text-white font-bold text-xl mb-2">ERP Synchronization</h4>
+                            <p class="text-gray-500 leading-relaxed">Once the AI successfully optimizes and executes a
+                                decision, the finalized data is pushed down to your legacy ERP. Your ERP remains exactly
+                                what it was built to be: a compliant, static financial system of record.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <!-- Navigation Click Zones -->
         <div class="nav-zone nav-zone-left" id="zone-prev" title="Previous Page"></div>
         <div class="nav-zone nav-zone-right" id="zone-next" title="Next Page"></div>
 
-        <!-- Instructional Overlay (Fades out) -->
+        <!-- Instructional Overlay -->
         <div id="instruction"
-            class="absolute pointer-events-none font-mono text-xs text-srini-wise tracking-widest uppercase transition-opacity duration-1000 bg-black/80 px-4 py-2 border border-srini-card">
+            class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 pointer-events-none font-mono text-xs text-srini-wise tracking-widest uppercase transition-opacity duration-1000 bg-black/90 px-6 py-3 border border-srini-card z-50">
             CLICK RIGHT TO ADVANCE ->
         </div>
 
@@ -145,54 +330,38 @@
     </main>
 
     <script>
-        // Target paths for your high-res images
-        const assets = [
-            '../assets/ASCOP/1.png',
-            '../assets/ASCOP/2.png',
-            '../assets/ASCOP/3.png',
-            '../assets/ASCOP/4.png'
-        ];
-
+        const totalSlides = 4;
         let currentIndex = 0;
-        const viewer = document.getElementById('viewer-image');
+
         const counter = document.getElementById('slide-counter');
         const progressBar = document.getElementById('progress-bar');
         const instruction = document.getElementById('instruction');
 
-        // Preload assets for zero-latency switching
-        assets.forEach(src => {
-            const img = new Image();
-            img.src = src;
-        });
-
-        // Initialize first payload
-        viewer.src = assets[0];
-
-        // Fade out instruction after 3 seconds
+        // Fade out instruction after 2.5 seconds
         setTimeout(() => {
             instruction.style.opacity = '0';
-        }, 3000);
+        }, 2500);
 
         function updateView() {
-            // Drop opacity for transition
-            viewer.classList.remove('active');
+            // Remove active class from all slides
+            for (let i = 0; i < totalSlides; i++) {
+                document.getElementById(`slide-${i}`).classList.remove('active');
+            }
 
-            setTimeout(() => {
-                viewer.src = assets[currentIndex];
-                counter.innerText = `0${currentIndex + 1} / 0${assets.length}`;
-                progressBar.style.width = `${((currentIndex + 1) / assets.length) * 100}%`;
+            // Add active class to current slide
+            document.getElementById(`slide-${currentIndex}`).classList.add('active');
 
-                // Bring opacity back
-                viewer.classList.add('active');
-            }, 150); // Lightning fast transition
+            // Update HUD
+            counter.innerText = `0${currentIndex + 1} / 0${totalSlides}`;
+            progressBar.style.width = `${((currentIndex + 1) / totalSlides) * 100}%`;
         }
 
         document.getElementById('zone-next').addEventListener('click', () => {
-            if (currentIndex < assets.length - 1) {
+            if (currentIndex < totalSlides - 1) {
                 currentIndex++;
                 updateView();
             } else {
-                // If they click next on the last slide, route them to execute. Total funnel control.
+                // Funnel termination -> Route to revenue generation
                 window.location.href = '../index.html#contact';
             }
         });
@@ -204,7 +373,7 @@
             }
         });
 
-        // Keyboard arrow support
+        // Keyboard arrow support for executives
         document.addEventListener('keydown', (e) => {
             if (e.key === 'ArrowRight' || e.key === ' ') {
                 document.getElementById('zone-next').click();
