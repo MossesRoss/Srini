@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CTRL PROTOCOL | Hospitality Execution Node</title>
+    <meta name="description" content="Eradicate human error. Digitize the restaurant revenue cycle.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;900&family=JetBrains+Mono:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'], mono: ['JetBrains Mono', 'monospace'], },
+                    colors: {
+                        'srini-black': '#050505', 'srini-gray': '#121212', 'srini-card': '#1a1a1a',
+                        'srini-accent': '#D92525', 'srini-wise': '#555555', 'srini-danger': '#FF3333',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #050505; color: #E5E5E5; overflow-x: hidden; }
+        .scanlines { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.1) 50%, rgba(0, 0, 0, 0.1)); background-size: 100% 4px; pointer-events: none; z-index: 50; opacity: 0.2; }
+        .grid-bg { background-image: linear-gradient(to right, #121212 1px, transparent 1px), linear-gradient(to bottom, #121212 1px, transparent 1px); background-size: 50px 50px; }
+        .reveal { opacity: 0; transform: translateY(20px); transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+    </style>
+</head>
+
+<body class="antialiased selection:bg-srini-accent selection:text-white font-sans">
+    <div class="scanlines"></div>
+
+    <nav class="fixed w-full z-40 bg-srini-black/90 backdrop-blur-sm border-b border-srini-card">
+        <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+            <a href="../index.html" class="flex items-center gap-3 hover:opacity-80 transition-opacity">
+                <div class="text-xl font-bold tracking-tighter text-white font-mono">SRINI<span class="text-srini-wise">_CORP</span></div>
+            </a>
+            <div class="text-[10px] font-mono font-bold uppercase tracking-[0.2em] text-srini-accent border border-srini-accent/20 px-3 py-1 bg-srini-accent/10">
+                CATALOGUE // CTRL
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-32 pb-24 relative">
+        <div class="absolute inset-0 grid-bg opacity-50 -z-10"></div>
+        
+        <div class="max-w-5xl mx-auto px-6">
+            <!-- Header -->
+            <div class="mb-20 reveal">
+                <div class="flex items-center gap-4 mb-6">
+                    <div class="w-12 h-1 bg-srini-danger"></div>
+                    <div class="text-srini-danger font-mono text-xs font-bold tracking-widest uppercase">The CTRL Protocol</div>
+                </div>
+                <h1 class="text-6xl md:text-8xl font-black tracking-tighter text-white mb-8 leading-[0.9] uppercase">
+                    Eradicate<br>
+                    <span class="text-srini-wise">Human Error.</span>
+                </h1>
+                <p class="text-xl text-gray-400 max-w-2xl font-light leading-relaxed border-l-2 border-srini-card pl-6">
+                    Waitstaff are a depreciating asset prone to fatigue, miscommunication, and inefficiency. The CTRL Protocol is an autonomous execution layer that shifts operational overhead from your payroll directly to the consumer's device. 
+                </p>
+            </div>
+
+            <!-- The Reality Check -->
+            <div class="bg-srini-danger/10 border border-srini-danger/30 p-8 md:p-12 mb-24 reveal relative overflow-hidden group">
+                <div class="absolute top-0 right-0 p-4 opacity-10 text-srini-danger font-mono text-9xl leading-none font-black transform translate-x-4 -translate-y-4">?</div>
+                <h2 class="text-2xl font-bold text-white mb-4 relative z-10">The Mathematics of Inefficiency</h2>
+                <p class="text-gray-300 mb-6 max-w-2xl relative z-10">
+                    If your tables wait 8 minutes to order and 10 minutes to pay, you are losing an entire table turnover cycle per shift. You are bleeding margin to maintain a physical queue. If you prefer paying salaries for this bottleneck while your competitors automate, close this page. If you demand absolute control over your throughput, read on.
+                </p>
+            </div>
+
+            <!-- Architecture Modules -->
+            <div class="mb-24">
+                <h2 class="text-3xl font-bold text-white mb-12 reveal">Tri-Node Architecture.</h2>
+                
+                <div class="space-y-4">
+                    <!-- Node 1 -->
+                    <div class="bg-srini-card border border-srini-gray p-8 flex flex-col md:flex-row gap-8 items-start reveal hover:border-srini-wise transition-colors">
+                        <div class="text-srini-accent font-mono text-4xl font-black opacity-50">01</div>
+                        <div>
+                            <h3 class="text-xl font-bold text-white mb-2">The Consumer Terminal (Mass-Market UI)</h3>
+                            <p class="text-gray-500 text-sm leading-relaxed mb-4">A frictionless, zero-download web application accessed via physical QR beacons. Customers dictate their own orders. Calculations are absolute. Order miscommunications are mathematically impossible.</p>
+                            <div class="flex gap-2 font-mono text-[9px] uppercase tracking-widest text-srini-wise">
+                                <span class="bg-black px-2 py-1">Zero-Friction</span>
+                                <span class="bg-black px-2 py-1">Auto-Pricing</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Node 2 -->
+                    <div class="bg-srini-card border border-srini-gray p-8 flex flex-col md:flex-row gap-8 items-start reveal hover:border-srini-wise transition-colors">
+                        <div class="text-srini-accent font-mono text-4xl font-black opacity-50">02</div>
+                        <div>
+                            <h3 class="text-xl font-bold text-white mb-2">The Execution Node (Kitchen Ops)</h3>
+                            <p class="text-gray-500 text-sm leading-relaxed mb-4">Paper tickets are dead. The Ops Node is a centralized state machine. Orders arrive instantly. State escalations (Pending -> Cooking -> Ready) are enforced by server-side atomic locks to prevent race conditions during peak load.</p>
+                            <div class="flex gap-2 font-mono text-[9px] uppercase tracking-widest text-srini-wise">
+                                <span class="bg-black px-2 py-1">Atomic Locking</span>
+                                <span class="bg-black px-2 py-1">Real-time Sync</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Node 3 -->
+                    <div class="bg-srini-card border border-srini-gray p-8 flex flex-col md:flex-row gap-8 items-start reveal hover:border-srini-wise transition-colors">
+                        <div class="text-srini-accent font-mono text-4xl font-black opacity-50">03</div>
+                        <div>
+                            <h3 class="text-xl font-bold text-white mb-2">Intelligence Core (Audit & Ledger)</h3>
+                            <p class="text-gray-500 text-sm leading-relaxed mb-4">A cryptographic panopticon for management. Segregates secured capital from capital at risk. Tracks transaction velocity, table turnover rates, and absolute revenue with zero latency.</p>
+                            <div class="flex gap-2 font-mono text-[9px] uppercase tracking-widest text-srini-wise">
+                                <span class="bg-black px-2 py-1">Financial Segregation</span>
+                                <span class="bg-black px-2 py-1">Zero-Trust Ledger</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CTA -->
+            <div class="border-t border-srini-card pt-16 text-center reveal">
+                <h2 class="text-3xl font-bold text-white mb-6">Execution is immediate.</h2>
+                <p class="text-srini-wise mb-10 max-w-xl mx-auto">Hardware beacons deployed. Logic mapped. Staff trained. Your revenue cycle becomes autonomous in 48 hours.</p>
+                
+                <a href="mailto:contact@srinicorp.com?subject=DIRECTIVE:%20CTRL%20DEPLOYMENT&body=I%20require%20absolute%20control%20over%20my%20hospitality%20margins.%20Initiate%20CTRL%20Protocol%20deployment." 
+                   class="inline-block px-12 py-5 bg-white text-black font-bold font-mono text-sm uppercase tracking-widest hover:bg-srini-accent hover:text-white transition-all shadow-[0_0_20px_rgba(255,255,255,0.1)] hover:shadow-[0_0_30px_rgba(217,37,37,0.4)]">
+                    Initiate Deployment
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-black py-12 border-t border-srini-card text-center">
+        <div class="text-[10px] font-mono text-srini-wise uppercase tracking-widest">
+            SRINI CORP &copy; 2026 // SYSTEM ARCHITECTURE
+        </div>
+    </footer>
+
+    <script>
+        const revealElements = document.querySelectorAll(".reveal");
+        const revealOnScroll = () => {
+            const windowHeight = window.innerHeight;
+            revealElements.forEach((reveal) => {
+                const elementTop = reveal.getBoundingClientRect().top;
+                if (elementTop < windowHeight - 50) reveal.classList.add("active");
+            });
+        };
+        window.addEventListener("scroll", revealOnScroll);
+        revealOnScroll();
+    </script>
+</body>
+</html>
