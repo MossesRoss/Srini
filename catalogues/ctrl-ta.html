@@ -5,19 +5,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CTRL | ஸ்மார்ட் ரெஸ்டாரன்ட் சிஸ்டம்</title>
-    <meta name="description" content="தவறான ஆர்டர்களை நிறுத்துங்கள். அதிக டேபிள்களை கவனியுங்கள். கடையை ஆட்டோ பைலட்டில் ஓட்டுங்கள்.">
-    
-    <!-- Unified Favicon -->
+    <meta name="description"
+        content="தவறான ஆர்டர்களை நிறுத்துங்கள். சர்வர் செலவை குறையுங்கள். கடையை உங்கள் முழு கன்ட்ரோலில் கொண்டு வாருங்கள்.">
+
     <link rel="icon" type="image/png" href="../favicon.png">
     <link rel="apple-touch-icon" href="../favicon.png">
 
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;900&family=JetBrains+Mono:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;900&family=Mukta+Malar:wght@400;700;800&family=Noto+Sans+Tamil:wght@400;600;700&display=swap"
+        rel="stylesheet">
+
     <script>
         tailwind.config = {
             theme: {
                 extend: {
-                    fontFamily: { sans: ['Inter', 'sans-serif'], mono: ['JetBrains Mono', 'monospace'], },
+                    fontFamily: {
+                        sans: ['Noto Sans Tamil', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                        display: ['Mukta Malar', 'sans-serif']
+                    },
                     colors: {
                         'srini-black': '#050505', 'srini-gray': '#121212', 'srini-card': '#1a1a1a',
                         'srini-accent': '#D92525', 'srini-wise': '#555555', 'srini-danger': '#FF3333',
@@ -27,11 +34,40 @@
         }
     </script>
     <style>
-        body { background-color: #050505; color: #E5E5E5; overflow-x: hidden; }
-        .scanlines { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.1) 50%, rgba(0, 0, 0, 0.1)); background-size: 100% 4px; pointer-events: none; z-index: 50; opacity: 0.2; }
-        .grid-bg { background-image: linear-gradient(to right, #121212 1px, transparent 1px), linear-gradient(to bottom, #121212 1px, transparent 1px); background-size: 50px 50px; }
-        .reveal { opacity: 0; transform: translateY(20px); transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
-        .reveal.active { opacity: 1; transform: translateY(0); }
+        body {
+            background-color: #050505;
+            color: #E5E5E5;
+            overflow-x: hidden;
+        }
+
+        .scanlines {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.1) 50%, rgba(0, 0, 0, 0.1));
+            background-size: 100% 4px;
+            pointer-events: none;
+            z-index: 50;
+            opacity: 0.2;
+        }
+
+        .grid-bg {
+            background-image: linear-gradient(to right, #121212 1px, transparent 1px), linear-gradient(to bottom, #121212 1px, transparent 1px);
+            background-size: 50px 50px;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
     </style>
 </head>
 
@@ -41,14 +77,16 @@
     <nav class="fixed w-full z-40 bg-srini-black/90 backdrop-blur-sm border-b border-srini-card">
         <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
             <a href="../index.html" class="flex items-center gap-3 hover:opacity-80 transition-opacity">
-                <div class="text-xl font-bold tracking-tighter text-white font-mono">SRINI<span class="text-srini-wise">_CORP</span></div>
+                <div class="text-xl font-bold tracking-tighter text-white font-mono">SRINI<span
+                        class="text-srini-wise">_CORP</span></div>
             </a>
             <div class="flex items-center gap-4">
-                <!-- English Language Toggle -->
-                <a href="ctrl.html" title="Read in English" class="w-8 h-8 rounded border border-srini-wise flex items-center justify-center text-sm font-bold text-srini-wise hover:text-white hover:border-white hover:bg-white/10 transition-all">
+                <a href="ctrl.html" title="Read in English"
+                    class="w-8 h-8 rounded border border-srini-wise flex items-center justify-center text-sm font-bold text-srini-wise hover:text-white hover:border-white hover:bg-white/10 transition-all">
                     EN
                 </a>
-                <div class="hidden sm:block text-[10px] font-mono font-bold uppercase tracking-[0.2em] text-srini-accent border border-srini-accent/20 px-3 py-1 bg-srini-accent/10">
+                <div
+                    class="hidden sm:block text-[10px] font-mono font-bold uppercase tracking-[0.2em] text-srini-accent border border-srini-accent/20 px-3 py-1 bg-srini-accent/10">
                     CATALOGUE // CTRL
                 </div>
             </div>
@@ -57,85 +95,96 @@
 
     <main class="pt-32 pb-24 relative">
         <div class="absolute inset-0 grid-bg opacity-50 -z-10"></div>
-        
+
         <div class="max-w-5xl mx-auto px-6">
-            <!-- Header -->
             <div class="mb-20 reveal">
                 <div class="flex items-center gap-4 mb-6">
                     <div class="w-12 h-1 bg-srini-danger"></div>
-                    <div class="text-srini-danger font-mono text-xs font-bold tracking-widest uppercase">The CTRL Protocol</div>
+                    <div class="text-srini-danger font-mono text-xs font-bold tracking-widest uppercase">The CTRL
+                        Protocol</div>
                 </div>
-                <h1 class="text-5xl md:text-8xl font-black tracking-tighter text-white mb-8 leading-[0.9] uppercase">
+                <h1
+                    class="font-display text-5xl md:text-8xl font-extrabold tracking-tight text-white mb-8 leading-[1.1]">
                     நேரத்தையும் பணத்தையும்<br>
                     <span class="text-srini-wise">வீணாக்காதீர்கள்.</span>
                 </h1>
                 <p class="text-xl text-gray-400 max-w-2xl font-light leading-relaxed border-l-2 border-srini-card pl-6">
-                    கூட்ட நெரிசலில் உங்கள் சப்ளையர்கள் சோர்வடைவார்கள், ஆர்டர்களை மாற்றி கொடுப்பார்கள். CTRL உங்கள் மெனுவை நேரடியாக வாடிக்கையாளரின் போனுக்கே கொண்டு செல்கிறது. காத்திருப்பு இல்லை. தவறான ஆர்டர்கள் இல்லை. குறைவான ஆட்களை வைத்து அதிக லாபம் பாருங்கள்.
+                    சர்வர் வர தாமதம், ஆர்டர் மாறுவது, கல்லாவில் நடக்கும் தவறுகள்—இனி வேண்டாம். CTRL மூலம் உங்கள் மெனு
+                    நேரடியாக கஸ்டமரின் போனுக்கே செல்லும். குறைவான ஆட்களை வைத்து அதிக லாபம் பாருங்கள்.
                 </p>
             </div>
 
-            <!-- The Reality Check -->
-            <div class="bg-srini-danger/10 border border-srini-danger/30 p-8 md:p-12 mb-24 reveal relative overflow-hidden group">
-                <div class="absolute top-0 right-0 p-4 opacity-10 text-srini-danger font-mono text-9xl leading-none font-black transform translate-x-4 -translate-y-4">?</div>
-                <h2 class="text-2xl font-bold text-white mb-4 relative z-10">காத்திருப்பதற்கான விலை</h2>
+            <div
+                class="bg-srini-danger/10 border border-srini-danger/30 p-8 md:p-12 mb-24 reveal relative overflow-hidden group">
+                <div
+                    class="absolute top-0 right-0 p-4 opacity-10 text-srini-danger font-mono text-9xl leading-none font-black transform translate-x-4 -translate-y-4">
+                    !</div>
+                <h2 class="font-display text-2xl font-bold text-white mb-4 relative z-10">காத்திருப்பதற்கான விலை</h2>
                 <p class="text-gray-300 mb-6 max-w-2xl relative z-10 text-lg">
-                    ஒரு கஸ்டமர் ஆர்டர் கொடுக்க 10 நிமிஷமும், பில்லுக்கு 5 நிமிஷமும் காத்திருந்தால், உங்களுக்குத்தான் நஷ்டம். உங்கள் கடை ஊழியர்கள் சும்மா நடந்து செல்வதற்கு நீங்கள் சம்பளம் கொடுத்துக் கொண்டிருக்கிறீர்கள். வியாபாரத்தை டபுள் செய்ய ஆசை இருந்தால் தொடர்ந்து படியுங்கள்.
+                    உங்கள் கடையில் கஸ்டமர் ஆர்டர் கொடுக்க 10 நிமிடம் காத்திருந்தால், நஷ்டம் உங்களுக்குத்தான். சும்மா
+                    நிற்பதற்கும், நடப்பதற்கும் சர்வருக்கு சம்பளம் கொடுக்காதீர்கள். வியாபாரத்தை அடுத்த கட்டத்திற்கு
+                    கொண்டு செல்லுங்கள்.
                 </p>
             </div>
 
-            <!-- Architecture Modules -->
             <div class="mb-24">
-                <h2 class="text-3xl font-bold text-white mb-12 reveal">எப்படி வேலை செய்கிறது?</h2>
-                
+                <h2 class="font-display text-3xl font-bold text-white mb-12 reveal">எப்படி வேலை செய்கிறது?</h2>
+
                 <div class="space-y-4">
-                    <!-- Node 1 -->
-                    <div class="bg-srini-card border border-srini-gray p-8 flex flex-col md:flex-row gap-8 items-start reveal hover:border-srini-wise transition-colors">
+                    <div
+                        class="bg-srini-card border border-srini-gray p-8 flex flex-col md:flex-row gap-8 items-start reveal hover:border-srini-wise transition-colors">
                         <div class="text-srini-accent font-mono text-4xl font-black opacity-50">01</div>
                         <div>
-                            <h3 class="text-xl font-bold text-white mb-2">கஸ்டமர் மெனு (QR Code)</h3>
-                            <p class="text-gray-500 text-sm leading-relaxed mb-4">கஸ்டமர்கள் உட்கார்ந்து, டேபிளில் உள்ள QR கோடை ஸ்கேன் செய்து தங்கள் போனிலேயே ஆர்டர் செய்யலாம். எந்த ஆப்பும் (App) தேவையில்லை. பில் தானாகவே கணக்காகும். சப்ளையருக்காக காத்திருக்க வேண்டியதில்லை.</p>
+                            <h3 class="font-display text-xl font-bold text-white mb-2">கஸ்டமர் ஆர்டர் (QR Menu)</h3>
+                            <p class="text-gray-500 text-sm leading-relaxed mb-4">கஸ்டமர்கள் டேபிளில் உள்ள QR கோடை
+                                ஸ்கேன் செய்து தங்கள் போனிலேயே ஆர்டர் செய்வார்கள். எந்த ஆப்பும் தேவையில்லை. சர்வர் வர
+                                காத்திருக்க வேண்டாம். பில்லில் தில்லுமுல்லு நடக்காது.</p>
                             <div class="flex gap-2 font-mono text-[9px] uppercase tracking-widest text-srini-wise">
-                                <span class="bg-black px-2 py-1">சப்ளையர் தேவையில்லை</span>
+                                <span class="bg-black px-2 py-1">சர்வர் செலவு மிச்சம்</span>
                                 <span class="bg-black px-2 py-1">உடனடி ஆர்டர்</span>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Node 2 -->
-                    <div class="bg-srini-card border border-srini-gray p-8 flex flex-col md:flex-row gap-8 items-start reveal hover:border-srini-wise transition-colors">
+                    <div
+                        class="bg-srini-card border border-srini-gray p-8 flex flex-col md:flex-row gap-8 items-start reveal hover:border-srini-wise transition-colors">
                         <div class="text-srini-accent font-mono text-4xl font-black opacity-50">02</div>
                         <div>
-                            <h3 class="text-xl font-bold text-white mb-2">கிச்சன் ஸ்கிரீன்</h3>
-                            <p class="text-gray-500 text-sm leading-relaxed mb-4">பேப்பர் டிக்கெட்டுகளை தூக்கி எறியுங்கள். மாஸ்டர் (Chef) ஸ்கிரீனில் எந்த டேபிளுக்கு என்ன ஆர்டர் என்று தெளிவாக தெரியும். ஜூஸ் அல்லது உணவு ரெடியானதும் ஒரு பட்டனை அழுத்தினால் போதும். சத்தம் இல்லை, குழப்பம் இல்லை.</p>
+                            <h3 class="font-display text-xl font-bold text-white mb-2">கிச்சன் டிஸ்ப்ளே</h3>
+                            <p class="text-gray-500 text-sm leading-relaxed mb-4">பேப்பர் டோக்கன் சிஸ்டத்தை தூக்கி
+                                எறியுங்கள். கிச்சனில் உள்ள மாஸ்டருக்கு எந்த டேபிள், என்ன ஆர்டர் என்று ஸ்கிரீனில்
+                                தெளிவாகத் தெரியும். சாப்பாடு ரெடியானதும் ஒரு பட்டனை அழுத்தினால் போதும்.</p>
                             <div class="flex gap-2 font-mono text-[9px] uppercase tracking-widest text-srini-wise">
                                 <span class="bg-black px-2 py-1">குழப்பம் இல்லை</span>
-                                <span class="bg-black px-2 py-1">லைவ் அப்டேட்ஸ்</span>
+                                <span class="bg-black px-2 py-1">வேகமான டெலிவரி</span>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Node 3 -->
-                    <div class="bg-srini-card border border-srini-gray p-8 flex flex-col md:flex-row gap-8 items-start reveal hover:border-srini-wise transition-colors">
+                    <div
+                        class="bg-srini-card border border-srini-gray p-8 flex flex-col md:flex-row gap-8 items-start reveal hover:border-srini-wise transition-colors">
                         <div class="text-srini-accent font-mono text-4xl font-black opacity-50">03</div>
                         <div>
-                            <h3 class="text-xl font-bold text-white mb-2">ஓனர் டேஷ்போர்டு</h3>
-                            <p class="text-gray-500 text-sm leading-relaxed mb-4">இன்று கடை எவ்வளவு சம்பாதிக்கிறது என்பதை உங்கள் போனிலேயே லைவ் ஆகப் பார்க்கலாம். ஒவ்வொரு ரூபாயையும் கண்காணிக்கலாம், எந்த டேபிள் காலியாக உள்ளது, எது அதிகம் விற்பனையாகிறது என கடையின் முழு கன்ட்ரோலும் உங்கள் கையில்.</p>
+                            <h3 class="font-display text-xl font-bold text-white mb-2">ஓனர் கன்ட்ரோல்</h3>
+                            <p class="text-gray-500 text-sm leading-relaxed mb-4">இன்று கல்லாவில் எவ்வளவு கலெக்‌ஷன்,
+                                எந்த டேபிள் காலியாக உள்ளது, எது அதிகம் விற்பனையாகிறது என்பதை உங்கள் போனிலேயே லைவ் ஆகப்
+                                பார்க்கலாம். முழு கடையின் கன்ட்ரோலும் உங்கள் கையில்.</p>
                             <div class="flex gap-2 font-mono text-[9px] uppercase tracking-widest text-srini-wise">
-                                <span class="bg-black px-2 py-1">லைவ் கலெக்‌ஷன்</span>
-                                <span class="bg-black px-2 py-1">முழு கன்ட்ரோல்</span>
+                                <span class="bg-black px-2 py-1">லைவ் கல்லா</span>
+                                <span class="bg-black px-2 py-1">100% கன்ட்ரோல்</span>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- CTA -->
             <div class="border-t border-srini-card pt-16 text-center reveal">
-                <h2 class="text-3xl font-bold text-white mb-6">இன்றே லாபத்தை அதிகமாக்குங்கள்.</h2>
-                <p class="text-srini-wise mb-10 max-w-xl mx-auto">QR கோடுகள், கிச்சன் ஸ்கிரீன் மற்றும் உங்கள் டேஷ்போர்டை வெறும் 48 மணி நேரத்தில் செட் செய்து தருகிறோம். இந்த வாரமே உங்கள் கடையை அப்கிரேட் செய்யுங்கள்.</p>
-                
-                <a href="mailto:contact@srinicorp.com?subject=கடையை%20அப்கிரேட்%20செய்ய%20வேண்டும்&body=நான்%20என்%20கடையின்%20வியாபாரத்தை%20அதிகரிக்க%20விரும்புகிறேன்.%20CTRL%20சிஸ்டத்தை%20பற்றி%20பேசலாம்." 
-                   class="inline-block px-12 py-5 bg-white text-black font-bold font-mono text-sm uppercase tracking-widest hover:bg-srini-accent hover:text-white transition-all shadow-[0_0_20px_rgba(255,255,255,0.1)] hover:shadow-[0_0_30px_rgba(217,37,37,0.4)]">
+                <h2 class="font-display text-3xl font-bold text-white mb-6">இன்றே லாபத்தை அதிகமாக்குங்கள்.</h2>
+                <p class="text-srini-wise mb-10 max-w-xl mx-auto">QR கோடுகள், கிச்சன் ஸ்கிரீன் மற்றும் உங்கள் டேஷ்போர்டை
+                    வெறும் 48 மணி நேரத்தில் செட் செய்து தருகிறோம். இந்த வாரமே உங்கள் கடையை அப்கிரேட் செய்யுங்கள்.</p>
+
+                <a href="mailto:contact@srinicorp.com?subject=கடையை%20அப்கிரேட்%20செய்ய%20வேண்டும்"
+                    class="inline-block px-12 py-5 bg-white text-black font-bold font-mono text-sm uppercase tracking-widest hover:bg-srini-accent hover:text-white transition-all shadow-[0_0_20px_rgba(255,255,255,0.1)] hover:shadow-[0_0_30px_rgba(217,37,37,0.4)]">
                     கடையை அப்கிரேட் செய்யுங்கள்
                 </a>
             </div>
@@ -161,4 +210,5 @@
         revealOnScroll();
     </script>
 </body>
+
 </html>
