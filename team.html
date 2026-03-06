@@ -1,242 +1,171 @@
-<!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<main class="max-w-7xl mx-auto px-6 pb-32">
+    <div class="mb-16 reveal">
+        <h1 class="text-6xl font-black mb-4 text-white tracking-tight uppercase">Board.</h1>
+        <p class="text-srini-wise font-mono text-sm uppercase tracking-widest">
+            Architects of the Autonomous Paradigm.
+        </p>
+    </div>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Behind SRINI CORP</title>
-
-    <link rel="icon" type="image/png" href="favicon.png">
-    <link rel="apple-touch-icon" href="favicon.png">
-
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;900&family=JetBrains+Mono:wght@400;500;700&display=swap"
-        rel="stylesheet">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: { sans: ['Inter', 'sans-serif'], mono: ['JetBrains Mono', 'monospace'] },
-                    colors: { 'srini-black': '#050505', 'srini-card': '#1a1a1a', 'srini-accent': '#D92525', 'srini-wise': '#555555' }
-                }
-            }
-        }
-    </script>
-    <style>
-        body {
-            background-color: #050505;
-            color: #E5E5E5;
-        }
-
-        .leader-card {
-            overflow: hidden;
-            position: relative;
-        }
-
-        .leader-img-container {
-            height: 100%;
-            width: 100%;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .leader-img {
-            filter: grayscale(100%) contrast(1.2) brightness(0.8);
-            transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            transform-origin: center center;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .leader-card:hover .leader-img {
-            filter: grayscale(0%) contrast(1.1) brightness(1);
-            transform: translateY(-10px) scale(1.02);
-        }
-
-        .leader-socials {
-            position: absolute;
-            top: 20px;
-            right: 0;
-            padding-right: 15px;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            opacity: 0;
-            transform: translateX(20px);
-            transition: all 0.4s ease 0.1s;
-            z-index: 20;
-        }
-
-        .leader-card:hover .leader-socials {
-            opacity: 1;
-            transform: translateX(0);
-        }
-
-        .social-link {
-            width: 36px;
-            height: 36px;
-            background: rgba(0, 0, 0, 0.8);
-            border: 1px solid #333;
-            color: #D92525;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 14px;
-            transition: all 0.2s;
-        }
-
-        .social-link:hover {
-            background: #D92525;
-            color: white;
-            border-color: #D92525;
-        }
-
-        .leader-overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(to top, rgba(5, 5, 5, 0.95) 0%, rgba(5, 5, 5, 0.1) 100%);
-            padding: 1.5rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            opacity: 0;
-            transform: translateY(10px);
-            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            z-index: 15;
-        }
-
-        .leader-card:hover .leader-overlay {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .reveal {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    </style>
-</head>
-
-<body class="antialiased selection:bg-srini-accent selection:text-white font-sans pt-24">
-
-    <!-- Navigation -->
-    <nav class="fixed top-0 w-full z-40 bg-srini-black/90 backdrop-blur-sm border-b border-srini-card">
-        <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-            <a href="index.html"
-                class="text-xl font-bold tracking-tighter text-white font-mono hover:text-srini-accent transition-colors"><-
-                    BACK TO HUB</a>
-        </div>
-    </nav>
-
-    <main class="max-w-7xl mx-auto px-6 pb-32">
-        <div class="mb-16 reveal">
-            <h1 class="text-6xl font-black mb-4 text-white tracking-tight">The Board.</h1>
-            <p class="text-srini-wise font-mono text-sm uppercase tracking-widest">
-                Architects of the Autonomous Paradigm.
-            </p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-1">
-            <!-- MOSSES -->
-            <div class="leader-card group bg-black border border-srini-card reveal delay-100">
-                <div class="leader-img-container aspect-[3/4]">
-                    <img src="assets/mosses.png" alt="Mosses" class="leader-img">
-                    <div class="leader-overlay">
-                        <p class="text-white font-bold mb-1">Architect</p>
-                        <p class="text-gray-400 text-sm leading-snug">Designs the overarching system logic. Total
-                            architectural dominance.</p>
-                    </div>
-                    <div class="leader-socials">
-                        <a href="https://www.linkedin.com/company/srini-corp" target="_blank" class="social-link"><span
-                                class="font-mono font-bold">in</span></a>
-                    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-1">
+        <div class="leader-card group bg-black border border-srini-card reveal delay-100">
+            <div class="leader-img-container aspect-[3/4]">
+                <img src="assets/mosses.png" alt="Mosses" class="leader-img">
+                <div class="leader-overlay">
+                    <p class="text-white font-bold mb-1">Architect</p>
+                    <p class="text-gray-400 text-sm leading-snug">Designs the overarching system logic. Total
+                        architectural dominance.</p>
                 </div>
-                <div class="p-4 bg-srini-black relative z-20 border-t border-srini-card">
-                    <h3 class="text-lg font-bold text-white">Mosses</h3>
-                    <p class="text-srini-wise font-mono text-[10px] uppercase tracking-widest mt-1">Architect</p>
+                <div class="leader-socials">
+                    <a href="https://www.linkedin.com/company/srini-corp" target="_blank" class="social-link"><span
+                            class="font-mono font-bold">in</span></a>
                 </div>
             </div>
+            <div class="p-4 bg-srini-black relative z-20 border-t border-srini-card">
+                <h3 class="text-lg font-bold text-white">Mosses</h3>
+                <p class="text-srini-wise font-mono text-[10px] uppercase tracking-widest mt-1">Architect</p>
+            </div>
+        </div>
 
-            <!-- ABI -->
-            <div class="leader-card group bg-black border border-srini-card reveal delay-200">
-                <div class="leader-img-container aspect-[3/4]">
-                    <img src="assets/abi.png" alt="Abi" class="leader-img">
-                    <div class="leader-overlay">
-                        <p class="text-white font-bold mb-1">CRO</p>
-                        <p class="text-gray-400 text-sm leading-snug">Drives revenue. Converts technical superiority
-                            into capital.</p>
-                    </div>
-                    <div class="leader-socials">
-                        <a href="https://www.linkedin.com/company/srini-corp" target="_blank" class="social-link"><span
-                                class="font-mono font-bold">in</span></a>
-                    </div>
+        <div class="leader-card group bg-black border border-srini-card reveal delay-[150ms]">
+            <div class="leader-img-container aspect-[3/4]">
+                <img src="assets/chris.png" alt="Christopher" class="leader-img">
+                <div class="leader-overlay">
+                    <p class="text-white font-bold mb-1">Global Strategy & Capital</p>
+                    <p class="text-gray-400 text-sm leading-snug">Secures critical infrastructure, capital backing, and
+                        directs US expansion logic.</p>
                 </div>
-                <div class="p-4 bg-srini-black relative z-20 border-t border-srini-card">
-                    <h3 class="text-lg font-bold text-white">Abi</h3>
-                    <p class="text-srini-wise font-mono text-[10px] uppercase tracking-widest mt-1">CRO</p>
+                <div class="leader-socials">
+                    <a href="https://www.linkedin.com/company/srini-corp" target="_blank" class="social-link"><span
+                            class="font-mono font-bold">in</span></a>
                 </div>
             </div>
+            <div class="p-4 bg-srini-black relative z-20 border-t border-srini-card">
+                <h3 class="text-lg font-bold text-white">Christopher</h3>
+                <p class="text-srini-wise font-mono text-[10px] uppercase tracking-widest mt-1">Global Strategy &
+                    Capital</p>
+            </div>
+        </div>
 
-            <!-- ROSS -->
-            <div class="leader-card group bg-black border border-srini-card reveal delay-300">
-                <div class="leader-img-container aspect-[3/4]">
-                    <img src="assets/coo.png" alt="Ross" class="leader-img">
-                    <div class="leader-overlay">
-                        <p class="text-white font-bold mb-1">Internal Operations</p>
-                        <p class="text-gray-400 text-sm leading-snug">Ensures flawless execution. Zero operational
-                            friction.</p>
-                    </div>
-                    <div class="leader-socials">
-                        <a href="https://www.linkedin.com/company/srini-corp" target="_blank" class="social-link"><span
-                                class="font-mono font-bold">in</span></a>
-                    </div>
+        <div class="leader-card group bg-black border border-srini-card reveal delay-200">
+            <div class="leader-img-container aspect-[3/4]">
+                <img src="assets/abi.png" alt="Abi" class="leader-img">
+                <div class="leader-overlay">
+                    <p class="text-white font-bold mb-1">CRO</p>
+                    <p class="text-gray-400 text-sm leading-snug">Drives revenue. Converts technical superiority into
+                        capital.</p>
                 </div>
-                <div class="p-4 bg-srini-black relative z-20 border-t border-srini-card">
-                    <h3 class="text-lg font-bold text-white">Ross</h3>
-                    <p class="text-srini-wise font-mono text-[10px] uppercase tracking-widest mt-1">Internal Operations
+                <div class="leader-socials">
+                    <a href="https://www.linkedin.com/company/srini-corp" target="_blank" class="social-link"><span
+                            class="font-mono font-bold">in</span></a>
+                </div>
+            </div>
+            <div class="p-4 bg-srini-black relative z-20 border-t border-srini-card">
+                <h3 class="text-lg font-bold text-white">Abi</h3>
+                <p class="text-srini-wise font-mono text-[10px] uppercase tracking-widest mt-1">CRO</p>
+            </div>
+        </div>
+
+        <div class="leader-card group bg-black border border-srini-card reveal delay-300">
+            <div class="leader-img-container aspect-[3/4]">
+                <img src="assets/coo.png" alt="Ross" class="leader-img">
+                <div class="leader-overlay">
+                    <p class="text-white font-bold mb-1">Internal Operations</p>
+                    <p class="text-gray-400 text-sm leading-snug">Ensures flawless execution. Zero operational friction.
                     </p>
                 </div>
+                <div class="leader-socials">
+                    <a href="https://www.linkedin.com/company/srini-corp" target="_blank" class="social-link"><span
+                            class="font-mono font-bold">in</span></a>
+                </div>
+            </div>
+            <div class="p-4 bg-srini-black relative z-20 border-t border-srini-card">
+                <h3 class="text-lg font-bold text-white">Ross</h3>
+                <p class="text-srini-wise font-mono text-[10px] uppercase tracking-widest mt-1">Internal Operations</p>
             </div>
         </div>
+    </div>
 
-        <!-- Directors -->
-        <div class="mt-20 pt-10 border-t border-srini-card reveal">
-            <h2 class="text-2xl font-bold mb-8 text-white">Technical Directorate</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="flex items-center gap-6 p-6 border border-srini-card bg-black/50">
-                    <div class="w-16 h-16 bg-gray-800 overflow-hidden rounded-full">
-                        <img src="assets/jp.png" class="w-full h-full object-cover grayscale">
+    <div class="mt-24 pt-10 border-t border-srini-card reveal">
+        <h2 class="text-3xl font-black mb-12 text-white tracking-tight">Tactical Unit.</h2>
+
+        <div class="grid grid-cols-1 gap-6">
+            <div class="bg-srini-card border border-srini-card p-8">
+                <div class="flex flex-col h-full">
+                    <div class="flex justify-between items-start mb-8">
+                        <div>
+                            <h3 class="text-white font-bold text-xl">The Apex Delivery Matrix</h3>
+                            <p class="text-srini-wise font-mono text-[10px] uppercase tracking-widest mt-1">Proprietary
+                                Automation & Execution Layer</p>
+                        </div>
+                        <div class="flex gap-2">
+                            <span
+                                class="px-2 py-1 bg-srini-accent/10 border border-srini-accent/20 text-srini-accent text-[10px] font-mono">ACTIVE_SYSTEM</span>
+                        </div>
+                    </div>
+
+                    <div class="mb-8">
+                        <p class="text-gray-400 text-sm leading-relaxed max-w-3xl">
+                            Our ruthlessly optimized, machine-accelerated infrastructure. By leveraging a proprietary
+                            stack of deterministic logic, autonomous scripting, and deeply integrated intelligence
+                            models, we bypass traditional development bottlenecks. This matrix guarantees our deployment
+                            cycles, ensuring absolute control and zero operational friction.
+                        </p>
+                    </div>
+
+                    <div class="mt-auto pt-6 border-t border-gray-800">
+                        <div class="flex justify-between items-end">
+                            <div class="max-w-md">
+                                <p class="text-gray-400 text-sm leading-relaxed">
+                                    <span class="text-white font-bold">Execution Velocity:</span> 95% reduction in
+                                    boilerplate and structural coding, reallocating human capital entirely to strategic
+                                    architecture and raw business logic.
+                                </p>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-2xl font-black text-white font-mono">95%</div>
+                                <div class="text-[8px] text-srini-wise uppercase tracking-widest">Efficiency Multiplier
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-srini-card border border-srini-card p-6 flex items-center gap-6">
+                    <div
+                        class="w-20 h-20 bg-gray-800 overflow-hidden rounded-full shrink-0 grayscale hover:grayscale-0 transition-all border border-srini-card">
+                        <img src="assets/amma.png" class="w-full h-full object-cover">
                     </div>
                     <div>
-                        <h4 class="text-white font-bold text-lg">Jayaprakash</h4>
-                        <p class="text-srini-wise text-xs font-mono uppercase tracking-widest mt-1">Content Manager &
-                            Creative Design</p>
+                        <h4 class="text-white font-bold text-xl">Kalpana</h4>
+                        <p class="text-srini-wise text-[10px] font-mono uppercase tracking-widest mt-1">Operational
+                            Foundation</p>
+                    </div>
+                </div>
+                <div class="bg-srini-card border border-srini-card p-6 flex items-center gap-6">
+                    <div
+                        class="w-20 h-20 bg-gray-800 overflow-hidden rounded-full shrink-0 grayscale hover:grayscale-0 transition-all border border-srini-card">
+                        <img src="assets/jp.png" class="w-full h-full object-cover">
+                    </div>
+                    <div>
+                        <h4 class="text-white font-bold text-xl">Jayaprakash</h4>
+                        <p class="text-srini-wise text-[10px] font-mono uppercase tracking-widest mt-1">Content and
+                            Design</p>
+                    </div>
+                </div>
+                <div class="bg-srini-card border border-srini-card p-6 flex items-center gap-6">
+                    <div
+                        class="w-20 h-20 bg-gray-800 overflow-hidden rounded-full shrink-0 grayscale hover:grayscale-0 transition-all border border-srini-card">
+                        <img src="assets/lux.png" class="w-full h-full object-cover">
+                    </div>
+                    <div>
+                        <h4 class="text-white font-bold text-xl">Lux</h4>
+                        <p class="text-srini-wise text-[10px] font-mono uppercase tracking-widest mt-1">Penetration
+                            Testing Specialist</p>
                     </div>
                 </div>
             </div>
         </div>
-    </main>
-
-    <script>
-        const revealElements = document.querySelectorAll(".reveal");
-        const revealOnScroll = () => {
-            const windowHeight = window.innerHeight;
-            revealElements.forEach((reveal) => {
-                const elementTop = reveal.getBoundingClientRect().top;
-                if (elementTop < windowHeight - 50) reveal.classList.add("active");
-            });
-        };
-        window.addEventListener("scroll", revealOnScroll);
-        revealOnScroll();
-    </script>
-</body>
-
-</html>
+    </div>
+</main>

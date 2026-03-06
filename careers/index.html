@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Careers | SRINI CORP</title>
+
+    <link rel="icon" type="image/png" href="../favicon.png">
+    <link rel="apple-touch-icon" href="../favicon.png">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;900&family=JetBrains+Mono:wght@400;500;700&display=swap"
+        rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        'srini-black': '#050505',
+                        'srini-gray': '#121212',
+                        'srini-card': '#1a1a1a',
+                        'srini-accent': '#D92525',
+                        'srini-wise': '#555555',
+                        'srini-danger': '#FF3333',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #050505;
+            color: #E5E5E5;
+            overflow-x: hidden;
+        }
+
+        .scanlines {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.1) 50%, rgba(0, 0, 0, 0.1));
+            background-size: 100% 4px;
+            pointer-events: none;
+            z-index: 50;
+            opacity: 0.2;
+        }
+
+        .bottom-fade {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 20vh;
+            background: linear-gradient(to top, #050505 10%, transparent 100%);
+            pointer-events: none;
+            z-index: 45;
+        }
+
+        .grid-bg {
+            background-image: linear-gradient(to right, #121212 1px, transparent 1px), linear-gradient(to bottom, #121212 1px, transparent 1px);
+            background-size: 50px 50px;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        input, select, textarea {
+            background: #050505 !important;
+            border: 1px solid #1a1a1a !important;
+            color: white !important;
+        }
+        
+        input:focus, select:focus, textarea:focus {
+            border-color: #D92525 !important;
+            outline: none !important;
+        }
+    </style>
+</head>
+
+<body class="antialiased selection:bg-srini-accent selection:text-white font-sans">
+
+    <div class="scanlines"></div>
+    <div class="bottom-fade"></div>
+
+    <!-- HUD Navigation -->
+    <nav class="fixed w-full z-40 bg-srini-black/90 backdrop-blur-sm border-b border-srini-card">
+        <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <a href="../index.html" class="text-xl font-bold tracking-tighter text-white font-mono">SRINI<span
+                        class="text-srini-wise">_CORP</span></a>
+            </div>
+
+            <div class="hidden md:flex items-center space-x-12">
+                <a href="../index.html#architectures"
+                    class="text-[10px] font-mono font-bold uppercase tracking-[0.2em] text-srini-wise hover:text-white transition-colors">Architectures</a>
+                <a href="../services.html"
+                    class="text-[10px] font-mono font-bold uppercase tracking-[0.2em] text-srini-wise hover:text-white transition-colors">Services</a>
+                <a href="../team.html"
+                    class="text-[10px] font-mono font-bold uppercase tracking-[0.2em] text-srini-wise hover:text-white transition-colors">Board</a>
+                <a href="index.html"
+                    class="text-[10px] font-mono font-bold uppercase tracking-[0.2em] text-white transition-colors">Careers</a>
+                <a href="../catalogues/index.html"
+                    class="text-[10px] font-mono font-bold uppercase tracking-[0.2em] text-srini-accent hover:text-white transition-colors">Catalogue</a>
+            </div>
+
+            <a href="../index.html#contact"
+                class="px-6 py-2 border border-srini-danger text-srini-danger bg-srini-danger/5 font-mono text-[10px] font-bold uppercase tracking-widest hover:bg-srini-danger hover:text-white transition-all">
+                DOUBLE REVENUE
+            </a>
+        </div>
+    </nav>
+
+    <main class="pt-32 pb-32 relative">
+        <div class="absolute inset-0 grid-bg opacity-100 -z-10"></div>
+
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="mb-16 reveal">
+                <div class="font-mono text-srini-accent text-xs mb-6 border border-srini-accent/20 inline-block px-2 py-1 bg-srini-accent/10">
+                    >> OPEN ENROLLMENT ACTIVE
+                </div>
+                <h1 class="text-6xl md:text-8xl font-black tracking-tighter text-white mb-6 uppercase">Careers.</h1>
+                <p class="text-xl text-gray-400 font-light border-l-2 border-srini-accent pl-6 leading-relaxed">
+                    We are hiring at every level. From high level leaders to interns. If you want to build the future of industry, apply below.
+                </p>
+            </div>
+
+            <!-- Easy Apply Form -->
+            <div class="bg-srini-card border border-srini-card p-10 reveal delay-100 shadow-2xl relative overflow-hidden">
+                <div class="absolute top-0 right-0 p-4 opacity-20">
+                    <div class="text-[10px] font-mono text-srini-accent">FORM_ID: APPLY_01</div>
+                </div>
+                
+                <h2 class="text-2xl font-bold text-white mb-8 font-mono uppercase tracking-tight">Easy Apply</h2>
+                
+                <form id="applyForm" class="space-y-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-[10px] font-mono text-srini-wise uppercase tracking-widest mb-2">Full Name</label>
+                            <input type="text" id="name" required class="w-full p-4 font-mono text-sm focus:border-srini-accent transition-colors" placeholder="Your Name">
+                        </div>
+                        <div>
+                            <label class="block text-[10px] font-mono text-srini-wise uppercase tracking-widest mb-2">Email Address</label>
+                            <input type="email" id="email" required class="w-full p-4 font-mono text-sm focus:border-srini-accent transition-colors" placeholder="mail@example.com">
+                        </div>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-[10px] font-mono text-srini-wise uppercase tracking-widest mb-2">Phone Number</label>
+                            <input type="tel" id="phone" required class="w-full p-4 font-mono text-sm focus:border-srini-accent transition-colors" placeholder="+1 234 567 890">
+                        </div>
+                        <div>
+                            <label class="block text-[10px] font-mono text-srini-wise uppercase tracking-widest mb-2">Desired Role</label>
+                            <select id="role" required class="w-full p-4 font-mono text-sm focus:border-srini-accent transition-colors appearance-none">
+                                <option value="">Select a role</option>
+                                <option value="Growth Lead">Growth Lead</option>
+                                <option value="Systems Architect">Systems Architect</option>
+                                <option value="Operations Manager">Operations Manager</option>
+                                <option value="Creative Director">Creative Director</option>
+                                <option value="Strategy Director">Strategy Director</option>
+                                <option value="Junior Developer">Junior Developer</option>
+                                <option value="Sales Associate">Sales Associate</option>
+                                <option value="Operations Assistant">Operations Assistant</option>
+                                <option value="Content Creator">Content Creator</option>
+                                <option value="Technical Support">Technical Support</option>
+                                <option value="Engineering Intern">Engineering Intern</option>
+                                <option value="Growth Intern">Growth Intern</option>
+                                <option value="Design Intern">Design Intern</option>
+                                <option value="Research Assistant">Research Assistant</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-[10px] font-mono text-srini-wise uppercase tracking-widest mb-2">Years of Experience</label>
+                        <input type="text" id="experience" required class="w-full p-4 font-mono text-sm focus:border-srini-accent transition-colors" placeholder="e.g. 5 years">
+                    </div>
+                    
+                    <div>
+                        <label class="block text-[10px] font-mono text-srini-wise uppercase tracking-widest mb-2">Personal Note</label>
+                        <textarea id="note" rows="4" class="w-full p-4 font-mono text-sm focus:border-srini-accent transition-colors resize-none" placeholder="Tell us why you are the right fit"></textarea>
+                    </div>
+                    
+                    <button type="submit" class="w-full py-5 bg-srini-accent text-white font-bold font-mono text-sm uppercase tracking-widest hover:bg-white hover:text-black transition-all shadow-[0_0_20px_rgba(217,37,37,0.2)]">
+                        Submit Application ->
+                    </button>
+                </form>
+            </div>
+
+            <div class="mt-12 text-center reveal delay-200">
+                <a href="jobdescriptions.html" class="inline-block border-b border-srini-wise text-srini-wise font-mono text-xs uppercase tracking-widest hover:text-white hover:border-white transition-colors pb-1">
+                    View all job descriptions and roles ->
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        const revealElements = document.querySelectorAll(".reveal");
+        const revealOnScroll = () => {
+            const windowHeight = window.innerHeight;
+            revealElements.forEach((reveal) => {
+                const elementTop = reveal.getBoundingClientRect().top;
+                if (elementTop < windowHeight - 50) reveal.classList.add("active");
+            });
+        };
+        window.addEventListener("scroll", revealOnScroll);
+        revealOnScroll();
+
+        document.getElementById("applyForm").addEventListener("submit", function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById("name").value;
+            const email = document.getElementById("email").value;
+            const phone = document.getElementById("phone").value;
+            const role = document.getElementById("role").value;
+            const experience = document.getElementById("experience").value;
+            const note = document.getElementById("note").value;
+            
+            const subject = encodeURIComponent("Application for " + role + " position");
+            const body = encodeURIComponent(
+                "Name: " + name + "\n" +
+                "Email: " + email + "\n" +
+                "Phone: " + phone + "\n" +
+                "Role: " + role + "\n" +
+                "Experience: " + experience + "\n\n" +
+                "Note:\n" + note
+            );
+            
+            window.location.href = "mailto:careers@srinicorp.com?subject=" + subject + "&body=" + body;
+        });
+    </script>
+</body>
+
+</html>
